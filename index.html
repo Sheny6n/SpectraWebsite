@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectra — The Swiss Army Knife of Crypto Wallets</title>
+  <meta name="description" content="Spectra is a minimalist, open-source crypto wallet. Hold, send, stake. No trading. No DeFi. No bullshit. Just a tool that does its job." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Spectra home">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" fill="#e30613"/>
+        <rect x="14" y="6" width="4" height="20" fill="#fff"/>
+        <rect x="6" y="14" width="20" height="4" fill="#fff"/>
+      </svg>
+      <span>SPECTRA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#ethos">Ethos</a>
+      <a href="#features">Features</a>
+      <a href="#diagnostics">Diagnostics</a>
+      <a href="#legacy">Legacy</a>
+      <a href="#download">Download</a>
+      <a href="#donate" class="nav-cta">Donate</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="hero-meta">
+      <span class="dot"></span> v0.1.0 &nbsp;·&nbsp; OPEN SOURCE &nbsp;·&nbsp; GPL-3.0
+    </div>
+    <h1 class="hero-title">
+      The Swiss<br/>
+      Army Knife<br/>
+      <span class="accent">of crypto<br/>wallets.</span>
+    </h1>
+    <p class="hero-sub">
+      Hold. Send. Stake. Recover. <br/>
+      No trading. No swaps. No "buy with credit card." <br/>
+      No surface area for thieves to crawl through.
+    </p>
+    <div class="hero-actions">
+      <a href="#download" class="btn btn-primary">
+        Download Spectra
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+      </a>
+      <a href="#features" class="btn btn-ghost">Read the manual →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div><b>0</b><span>servers between you and the chain</span></div>
+      <div><b>27+</b><span>legacy wallet formats supported</span></div>
+      <div><b>∞</b><span>themes &amp; plugins</span></div>
+      <div><b>1</b><span>job: protect your money</span></div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>BITCOIN CORE</span><span>·</span>
+      <span>ELECTRUM</span><span>·</span>
+      <span>ARMORY</span><span>·</span>
+      <span>WASABI</span><span>·</span>
+      <span>SPARROW</span><span>·</span>
+      <span>METAMASK</span><span>·</span>
+      <span>MYETHERWALLET</span><span>·</span>
+      <span>EXODUS</span><span>·</span>
+      <span>BIP-32</span><span>·</span>
+      <span>BIP-39</span><span>·</span>
+      <span>BIP-44</span><span>·</span>
+      <span>WALLET.DAT</span><span>·</span>
+      <span>LEDGER</span><span>·</span>
+      <span>TREZOR</span><span>·</span>
+      <span>COLDCARD</span><span>·</span>
+      <span>PSBT</span><span>·</span>
+      <span>BITCOIN CORE</span><span>·</span>
+      <span>ELECTRUM</span><span>·</span>
+      <span>ARMORY</span><span>·</span>
+      <span>WASABI</span><span>·</span>
+      <span>SPARROW</span><span>·</span>
+      <span>METAMASK</span><span>·</span>
+      <span>MYETHERWALLET</span><span>·</span>
+      <span>EXODUS</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- ===== ETHOS ===== -->
+  <section class="section ethos" id="ethos">
+    <div class="section-label">/ 01 — ETHOS</div>
+    <div class="ethos-grid">
+      <div class="ethos-text">
+        <h2>Crypto was meant to be a <span class="strike">casino</span> <span class="accent">tool.</span></h2>
+        <p>
+          Somewhere along the way, wallets became casinos. They sprouted swap buttons,
+          credit-card on-ramps, NFT galleries, yield farms, and "trending tokens"
+          carousels designed to make you trade until you bleed.
+        </p>
+        <p>
+          Each of those features is also a door. A door for a phishing site. A door
+          for a malicious contract. A door for a hacker who only needs you to click
+          once. We slammed every one of those doors shut.
+        </p>
+        <p>
+          Spectra holds your coins. It sends your coins. It stakes your coins. It
+          recovers your coins when something goes wrong. That is the entire job.
+        </p>
+      </div>
+      <aside class="ethos-list">
+        <h3>What Spectra is</h3>
+        <ul class="check">
+          <li>A wallet to hold</li>
+          <li>A tool for payment</li>
+          <li>A staking client</li>
+          <li>A recovery toolkit</li>
+          <li>Open source. Auditable. Reproducible.</li>
+        </ul>
+        <h3>What Spectra is not</h3>
+        <ul class="cross">
+          <li>An exchange</li>
+          <li>A DEX aggregator</li>
+          <li>A "yield optimizer"</li>
+          <li>A meme-token launcher</li>
+          <li>A get-rich-quick machine</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="section features" id="features">
+    <div class="section-label">/ 02 — FEATURES</div>
+    <h2 class="section-title">Every blade you actually need.<br/><span class="muted">None of the ones that cut you.</span></h2>
+
+    <div class="feature-grid">
+      <article class="feature">
+        <div class="feature-num">01</div>
+        <h3>Multi-chain, single mind</h3>
+        <p>Bitcoin, Ethereum, Litecoin, Monero, Solana, and 40+ others under one keyring. Each chain isolated, each balance independent.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">02</div>
+        <h3>Self-diagnostics</h3>
+        <p>The wallet runs continuous health checks: peer connectivity, chain sync, key integrity, mempool fee sanity. When something is off, you know first.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">03</div>
+        <h3>Verbose logs, plain English</h3>
+        <p>Every transaction, every connection, every signature — written to a log you can actually read. Filter, search, export. Debug your own wallet.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">04</div>
+        <h3>Customizable down to the pixel</h3>
+        <p>Themes, layouts, keybindings, hotkeys, panel arrangement. Build your own wallet on top of ours with the plugin SDK.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">05</div>
+        <h3>Hardware-first</h3>
+        <p>Native support for Ledger, Trezor, Coldcard, BitBox, Keystone, and any device speaking PSBT. Air-gapped signing via QR or microSD.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">06</div>
+        <h3>Coin control &amp; UTXO surgery</h3>
+        <p>Hand-pick which UTXOs to spend. Label them. Freeze them. Avoid linkability. The kind of control power users have begged for.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">07</div>
+        <h3>Multisig &amp; PSBT</h3>
+        <p>2-of-3, 3-of-5, whatever your threat model wants. Build, sign, and broadcast partially-signed transactions across machines.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">08</div>
+        <h3>Lightning for daily spend</h3>
+        <p>Native LN node or remote LSP — your call. Sub-cent fees, instant settlement, zero custody.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">09</div>
+        <h3>Stake without surrender</h3>
+        <p>Stake ETH, SOL, ATOM, DOT and others non-custodially. Your validators, your keys, your rewards.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">10</div>
+        <h3>Tor &amp; custom RPC</h3>
+        <p>Route through Tor by default. Connect to your own node. Never leak addresses to a third-party indexer again.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">11</div>
+        <h3>Encrypted backups</h3>
+        <p>Shamir's Secret Sharing, BIP-39 seed plates, encrypted cloud snapshots — pick the one that matches your paranoia level.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">12</div>
+        <h3>Watch-only &amp; cold storage</h3>
+        <p>Monitor balances on a public terminal without ever exposing keys. Sign offline. Broadcast online. The way it was meant to work.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">13</div>
+        <h3>Address book with labels</h3>
+        <p>Tag every address you've ever interacted with. Local-only, encrypted, never synced to anyone's cloud.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">14</div>
+        <h3>Custom fee oracle</h3>
+        <p>Pick from mempool.space, your own node, or a flat sat/vB. No more "the wallet picked an absurd fee."</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">15</div>
+        <h3>Reproducible builds</h3>
+        <p>Compile the binary yourself. Compare hashes. Trust no one — including us.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-num">16</div>
+        <h3>Lightweight</h3>
+        <p>Under 40 MB. Boots cold in under a second. Runs on a 2014 ThinkPad without breaking a sweat.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== DIAGNOSTICS / TERMINAL ===== -->
+  <section class="section diagnostics" id="diagnostics">
+    <div class="section-label">/ 03 — DIAGNOSTICS</div>
+    <div class="diag-grid">
+      <div class="diag-text">
+        <h2>The first wallet that <span class="accent">tells you what's wrong</span> before you have to ask.</h2>
+        <p>
+          Most wallets are black boxes. When something breaks — a stuck transaction,
+          a desync, a bad fee estimate — you're left guessing. Spectra ships with a
+          live diagnostics panel and a structured log viewer that turns "it's broken"
+          into "here's the line and here's the fix."
+        </p>
+        <ul class="diag-list">
+          <li><b>Health checks:</b> peer count, sync depth, mempool latency, key integrity, RPC pings.</li>
+          <li><b>Auto-repair:</b> common failures (stale UTXO cache, orphaned tx) repaired in one click.</li>
+          <li><b>Exportable bug reports:</b> redacted, signed, ready to file as a GitHub issue.</li>
+        </ul>
+      </div>
+
+      <div class="terminal" aria-hidden="true">
+        <div class="terminal-bar">
+          <span class="tdot tdot-r"></span>
+          <span class="tdot tdot-y"></span>
+          <span class="tdot tdot-g"></span>
+          <span class="terminal-title">spectra · diagnostics</span>
+        </div>
+        <pre class="terminal-body" id="terminal"></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEGACY ===== -->
+  <section class="section legacy" id="legacy">
+    <div class="section-label">/ 04 — LEGACY &amp; RECOVERY</div>
+    <h2 class="section-title">Got an old wallet from 2013?<br/><span class="accent">Bring it home.</span></h2>
+    <p class="section-lead">
+      Spectra is built with a fanatical commitment to backwards compatibility. If
+      your coins exist on-chain, we will find a way to read them. We support legacy
+      formats most modern wallets quietly dropped years ago.
+    </p>
+
+    <div class="legacy-grid">
+      <div class="legacy-card">
+        <div class="legacy-num">·01</div>
+        <h3>Wallet imports</h3>
+        <p>wallet.dat, Electrum 1.x &amp; 2.x, Multibit, Armory, Bither, Mycelium, Blockchain.info v2/v3, Coinomi, MEW keystore, JSON keystore (v3), raw WIF, BIP-38 encrypted keys.</p>
+      </div>
+      <div class="legacy-card">
+        <div class="legacy-num">·02</div>
+        <h3>Lost-fund scanner</h3>
+        <p>Give us a seed phrase and we'll grind every common derivation path — BIP-32, 44, 49, 84, 86, m/0', m/0/0, Ledger Live, Electrum, custom — and surface every UTXO we find.</p>
+      </div>
+      <div class="legacy-card">
+        <div class="legacy-num">·03</div>
+        <h3>Forgotten passwords</h3>
+        <p>Local, offline brute-forcer with custom rules: typo correction, common substitutions, dictionary + mask. Your machine. Your patience. No cloud.</p>
+      </div>
+      <div class="legacy-card">
+        <div class="legacy-num">·04</div>
+        <h3>Forks &amp; airdrops</h3>
+        <p>Claim BCH, BSV, BTG, ETC, ETHW from your old BTC/ETH addresses. Check eligibility for historical airdrops on chains you forgot you ever touched.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOWNLOAD ===== -->
+  <section class="section download" id="download">
+    <div class="section-label">/ 05 — DOWNLOAD</div>
+    <h2 class="section-title">Free. Forever. <span class="accent">Forever free.</span></h2>
+    <p class="section-lead">
+      No accounts. No emails. No telemetry. No "premium tier." Just a binary you
+      can verify and run.
+    </p>
+
+    <div class="download-grid">
+      <a class="dl-card" href="#">
+        <div class="dl-os">macOS</div>
+        <div class="dl-meta">Universal · Apple Silicon + Intel</div>
+        <div class="dl-size">38.2 MB · .dmg</div>
+      </a>
+      <a class="dl-card" href="#">
+        <div class="dl-os">Windows</div>
+        <div class="dl-meta">x86_64 · Win 10+</div>
+        <div class="dl-size">36.1 MB · .exe</div>
+      </a>
+      <a class="dl-card" href="#">
+        <div class="dl-os">Linux</div>
+        <div class="dl-meta">AppImage · deb · rpm · Flatpak</div>
+        <div class="dl-size">34.7 MB</div>
+      </a>
+      <a class="dl-card" href="#">
+        <div class="dl-os">Source</div>
+        <div class="dl-meta">git clone &amp; build it yourself</div>
+        <div class="dl-size">~6 min on a laptop</div>
+      </a>
+    </div>
+
+    <div class="verify">
+      <span class="verify-label">VERIFY:</span>
+      <code>$ gpg --verify spectra-0.1.0.dmg.asc spectra-0.1.0.dmg</code>
+    </div>
+  </section>
+
+  <!-- ===== DONATE ===== -->
+  <section class="section donate" id="donate">
+    <div class="donate-card">
+      <div class="section-label dark">/ 06 — DONATE</div>
+      <h2>If Spectra ever saved you money,<br/><span class="accent">please give some back.</span></h2>
+      <p>
+        Spectra has no investors, no token, no premium tier, no ads, and never will.
+        The entire project runs on donations from people who think a wallet should
+        be a wallet. If that's you, here are our addresses.
+      </p>
+
+      <div class="donate-addresses">
+        <div class="addr">
+          <span class="addr-label">BTC</span>
+          <code>bc1qspectra0wallet0donations0swiss0army0knife0xyz</code>
+        </div>
+        <div class="addr">
+          <span class="addr-label">ETH</span>
+          <code>0xSpectraD0naTi0n5AddR355G035H3rE0000000000</code>
+        </div>
+        <div class="addr">
+          <span class="addr-label">XMR</span>
+          <code>4SpectraMoneroAddressForPrivacyMaximalistsOnlyVeryLong</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+          <rect x="2" y="2" width="28" height="28" fill="#e30613"/>
+          <rect x="14" y="6" width="4" height="20" fill="#fff"/>
+          <rect x="6" y="14" width="20" height="4" fill="#fff"/>
+        </svg>
+        <p>SPECTRA</p>
+        <small>The Swiss Army Knife of Crypto Wallets.</small>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <a href="#">GitHub</a>
+        <a href="#">Source mirror</a>
+        <a href="#">Reproducible builds</a>
+        <a href="#">Security audits</a>
+      </div>
+      <div>
+        <h4>Docs</h4>
+        <a href="#">Manual</a>
+        <a href="#">Plugin SDK</a>
+        <a href="#">Recovery guide</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <a href="#">Matrix</a>
+        <a href="#">IRC</a>
+        <a href="#">Mailing list</a>
+        <a href="#">Bug tracker</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Spectra Contributors · GPL-3.0 · No warranty, no telemetry, no nonsense.</span>
+      <span class="mono">build: 0.1.0 · sha256:7f3a…c2e9</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
