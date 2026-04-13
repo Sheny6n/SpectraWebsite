@@ -44,6 +44,18 @@ const translations = {
     'ethos-not-4':     'A meme-token launcher',
     'ethos-not-5':     'A get-rich-quick machine',
 
+    // Multi-chain
+    'mc-label':   '/ MULTI-CHAIN',
+    'mc-title':   'One wallet.<br/><span class="accent">Every chain.</span>',
+    'mc-lead':    'Spectra speaks every major chain natively — no bridges, no wrapped assets, no third-party plugins. Each network runs in its own isolated keyring so a compromise on one chain can never touch another.',
+    'mc-more':    '+ 40 more',
+    'mc-p1-num':  'Isolated',
+    'mc-p1-desc': 'Every chain lives in its own keyring. A key leak on one network is contained — it cannot cascade to others.',
+    'mc-p2-num':  'Native',
+    'mc-p2-desc': 'No wrapped tokens, no cross-chain bridges, no third-party plugins. Direct RPC to each network\'s own nodes.',
+    'mc-p3-num':  'Unified',
+    'mc-p3-desc': 'One seed phrase, one interface, one address book. All chains. No app-switching, no separate installs.',
+
     // Features
     'features-label': '/ 02 — FEATURES',
     'features-title': 'Every blade you actually need.<br/><span class="muted">None of the ones that cut you.</span>',
@@ -170,6 +182,18 @@ const translations = {
     'ethos-not-4':     '土狗代币发射台',
     'ethos-not-5':     '一夜暴富机器',
 
+    // Multi-chain
+    'mc-label':   '/ 多链支持',
+    'mc-title':   '一个钱包。<br/><span class="accent">掌控所有链。</span>',
+    'mc-lead':    'Spectra 原生支持所有主流区块链——无需桥接，无需包装资产，无需第三方插件。每条网络都在独立的密钥环中运行，单链密钥泄露不会波及其他链。',
+    'mc-more':    '+ 40 余种',
+    'mc-p1-num':  '隔离',
+    'mc-p1-desc': '每条链拥有独立密钥环。某条网络的密钥泄露被完全隔离，不会向其他链蔓延。',
+    'mc-p2-num':  '原生',
+    'mc-p2-desc': '无包装代币，无跨链桥，无第三方插件。直接通过 RPC 连接每条网络的原生节点。',
+    'mc-p3-num':  '统一',
+    'mc-p3-desc': '一个助记词，一套界面，一本地址簿。管理所有链。无需切换应用，无需分开安装。',
+
     // Features
     'features-label': '/ 02 — 功能',
     'features-title': '你真正需要的每一把刀。<br/><span class="muted">没有会割伤你的那种。</span>',
@@ -264,7 +288,7 @@ const translations = {
 // ============================================================
 let currentLang = 'en';
 
-function setLang(lang) {
+function setLang(lang, { pushHistory = false } = {}) {
   currentLang = lang;
   const t = translations[lang];
 
@@ -286,13 +310,33 @@ function setLang(lang) {
   // Update button label to show the OTHER language
   const label = document.getElementById('langLabel');
   if (label) label.textContent = lang === 'en' ? '中文' : 'EN';
+
+  // Sync URL query param without reloading the page
+  const url = new URL(window.location.href);
+  if (lang === 'en') {
+    url.searchParams.delete('lang');
+  } else {
+    url.searchParams.set('lang', lang);
+  }
+  if (pushHistory) {
+    history.pushState(null, '', url);
+  } else {
+    history.replaceState(null, '', url);
+  }
 }
 
+// Read lang from URL on first load
+(() => {
+  const param = new URLSearchParams(window.location.search).get('lang');
+  if (param && translations[param]) setLang(param);
+})();
+
+// Toggle button
 (() => {
   const btn = document.getElementById('langToggle');
   if (!btn) return;
   btn.addEventListener('click', () => {
-    setLang(currentLang === 'en' ? 'zh' : 'en');
+    setLang(currentLang === 'en' ? 'zh' : 'en', { pushHistory: true });
   });
 })();
 
