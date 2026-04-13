@@ -17,23 +17,30 @@
   <!-- ===== NAV ===== -->
   <header class="nav">
     <a class="brand" href="#top" aria-label="Spectra home">
-      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
-        <rect x="2" y="2" width="28" height="28" fill="#e30613"/>
-        <rect x="14" y="6" width="4" height="20" fill="#fff"/>
-        <rect x="6" y="14" width="20" height="4" fill="#fff"/>
-      </svg>
+      <span class="brand-mark" aria-hidden="true">S</span>
       <span>SPECTRA</span>
     </a>
     <nav class="nav-links">
       <a href="#ethos"       data-i18n="nav-ethos">Ethos</a>
       <a href="#features"    data-i18n="nav-features">Features</a>
+      <a href="#protocols"   data-i18n="nav-tech">Tech</a>
       <a href="#diagnostics" data-i18n="nav-diagnostics">Diagnostics</a>
       <a href="#legacy"      data-i18n="nav-legacy">Legacy</a>
       <a href="#download"    data-i18n="nav-download">Download</a>
       <a href="#donate" class="nav-cta" data-i18n="nav-donate">Donate</a>
-      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
-        <span class="lang-label" id="langLabel">中文</span>
-      </button>
+      <div class="lang-picker" id="langPicker">
+        <button class="lang-toggle" id="langToggle" aria-expanded="false" aria-label="Select language">
+          <span id="langLabel">EN</span>
+          <span class="lang-chevron">▾</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown" hidden>
+          <button class="lang-option" data-lang="en">EN &nbsp;·&nbsp; English</button>
+          <button class="lang-option" data-lang="zh">中文 &nbsp;·&nbsp; Chinese</button>
+          <button class="lang-option" data-lang="fr">FR &nbsp;·&nbsp; Français</button>
+          <button class="lang-option" data-lang="es">ES &nbsp;·&nbsp; Español</button>
+          <button class="lang-option" data-lang="pt">PT &nbsp;·&nbsp; Português</button>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -52,6 +59,10 @@
       No trading. No swaps. No "buy with credit card." <br/>
       No surface area for thieves to crawl through.
     </p>
+    <p class="hero-trust" data-i18n="hero-trust">
+      Zero telemetry. Zero accounts. Zero ads. Every line of code is public — read it, audit it, build it yourself, and verify the binary. We cannot track you because we built it that way.
+    </p>
+
     <div class="hero-actions">
       <a href="#download" class="btn btn-primary">
         <span data-i18n="hero-btn-download">Download Spectra</span>
@@ -238,30 +249,31 @@
     </div>
 
     <div class="mc-chain-grid">
-      <div class="mc-chip" style="--cc:#f7931a"><span class="mc-dot"></span>Bitcoin</div>
-      <div class="mc-chip" style="--cc:#627eea"><span class="mc-dot"></span>Ethereum</div>
-      <div class="mc-chip" style="--cc:#9945ff"><span class="mc-dot"></span>Solana</div>
-      <div class="mc-chip" style="--cc:#b2b2b2"><span class="mc-dot"></span>Litecoin</div>
-      <div class="mc-chip" style="--cc:#ff6600"><span class="mc-dot"></span>Monero</div>
-      <div class="mc-chip" style="--cc:#0033ad"><span class="mc-dot"></span>Cardano</div>
-      <div class="mc-chip" style="--cc:#e6007a"><span class="mc-dot"></span>Polkadot</div>
-      <div class="mc-chip" style="--cc:#6f7390"><span class="mc-dot"></span>Cosmos</div>
-      <div class="mc-chip" style="--cc:#e84142"><span class="mc-dot"></span>Avalanche</div>
-      <div class="mc-chip" style="--cc:#c2a633"><span class="mc-dot"></span>Dogecoin</div>
-      <div class="mc-chip" style="--cc:#f4b728"><span class="mc-dot"></span>Zcash</div>
-      <div class="mc-chip" style="--cc:#008de4"><span class="mc-dot"></span>Dash</div>
-      <div class="mc-chip" style="--cc:#0ac18e"><span class="mc-dot"></span>Bitcoin Cash</div>
-      <div class="mc-chip" style="--cc:#ff0013"><span class="mc-dot"></span>Tron</div>
-      <div class="mc-chip" style="--cc:#1969ff"><span class="mc-dot"></span>Fantom</div>
-      <div class="mc-chip" style="--cc:#00c08b"><span class="mc-dot"></span>Algorand</div>
-      <div class="mc-chip" style="--cc:#00ec97"><span class="mc-dot"></span>NEAR</div>
-      <div class="mc-chip" style="--cc:#28a0f0"><span class="mc-dot"></span>Arbitrum</div>
-      <div class="mc-chip" style="--cc:#ff0420"><span class="mc-dot"></span>Optimism</div>
-      <div class="mc-chip" style="--cc:#8247e5"><span class="mc-dot"></span>Polygon</div>
-      <div class="mc-chip" style="--cc:#e84142"><span class="mc-dot"></span>Ethereum Classic</div>
-      <div class="mc-chip" style="--cc:#2354e6"><span class="mc-dot"></span>Stellar</div>
-      <div class="mc-chip" style="--cc:#00aae4"><span class="mc-dot"></span>XRP</div>
-      <div class="mc-chip mc-chip--more" data-i18n="mc-more">+ 40 more</div>
+      <div class="mc-chip"><img src="TokenIcons/BitcoinToken.png"         alt="Bitcoin"          class="mc-icon" />Bitcoin</div>
+      <div class="mc-chip"><img src="TokenIcons/EthereumToken.png"        alt="Ethereum"         class="mc-icon" />Ethereum</div>
+      <div class="mc-chip"><img src="TokenIcons/SolanaToken.png"          alt="Solana"           class="mc-icon" />Solana</div>
+      <div class="mc-chip"><img src="TokenIcons/BNBToken.png"             alt="BNB Chain"        class="mc-icon" />BNB Chain</div>
+      <div class="mc-chip"><img src="TokenIcons/XRPToken.png"             alt="XRP Ledger"       class="mc-icon" />XRP Ledger</div>
+      <div class="mc-chip"><img src="TokenIcons/CardanoToken.png"         alt="Cardano"          class="mc-icon" />Cardano</div>
+      <div class="mc-chip"><img src="TokenIcons/AvaxToken.png"            alt="Avalanche"        class="mc-icon" />Avalanche</div>
+      <div class="mc-chip"><img src="TokenIcons/TronToken.png"            alt="Tron"             class="mc-icon" />Tron</div>
+      <div class="mc-chip"><img src="TokenIcons/PolkadotToken.png"        alt="Polkadot"         class="mc-icon" />Polkadot</div>
+      <div class="mc-chip"><img src="TokenIcons/TonToken.png"             alt="TON"              class="mc-icon" />TON</div>
+      <div class="mc-chip"><img src="TokenIcons/NearToken.png"            alt="NEAR"             class="mc-icon" />NEAR</div>
+      <div class="mc-chip"><img src="TokenIcons/StellarToken.png"         alt="Stellar"          class="mc-icon" />Stellar</div>
+      <div class="mc-chip"><img src="TokenIcons/IcpToken.png"             alt="ICP"              class="mc-icon" />ICP</div>
+      <div class="mc-chip"><img src="TokenIcons/AptosToken.png"           alt="Aptos"            class="mc-icon" />Aptos</div>
+      <div class="mc-chip"><img src="TokenIcons/SuiToken.png"             alt="SUI"              class="mc-icon" />SUI</div>
+      <div class="mc-chip"><img src="TokenIcons/LitecoinToken.png"        alt="Litecoin"         class="mc-icon" />Litecoin</div>
+      <div class="mc-chip"><img src="TokenIcons/MoneroToken.png"          alt="Monero"           class="mc-icon" />Monero</div>
+      <div class="mc-chip"><img src="TokenIcons/EthereumClassicToken.png" alt="Ethereum Classic" class="mc-icon" />Ethereum Classic</div>
+      <div class="mc-chip"><img src="TokenIcons/BitcoinCashToken.png"     alt="Bitcoin Cash"     class="mc-icon" />Bitcoin Cash</div>
+      <div class="mc-chip"><img src="TokenIcons/BitcoinSVToken.png"       alt="Bitcoin SV"       class="mc-icon" />Bitcoin SV</div>
+      <div class="mc-chip"><img src="TokenIcons/ArbitrumToken.png"        alt="Arbitrum"         class="mc-icon" />Arbitrum</div>
+      <div class="mc-chip"><img src="TokenIcons/OptimismToken.png"        alt="Optimism"         class="mc-icon" />Optimism</div>
+      <div class="mc-chip"><img src="TokenIcons/DogecoinToken.png"        alt="Dogecoin"         class="mc-icon" />Dogecoin</div>
+      <div class="mc-chip"><img src="TokenIcons/HyperliquidToken.png"     alt="Hyperliquid"      class="mc-icon" />Hyperliquid</div>
+      <div class="mc-chip"><img src="TokenIcons/CroToken.png"             alt="Cronos"           class="mc-icon" />Cronos</div>
     </div>
 
     <div class="mc-pillars">
@@ -274,8 +286,50 @@
         <p data-i18n="mc-p2-desc">No wrapped tokens, no cross-chain bridges, no third-party plugins. Direct RPC to each network's own nodes.</p>
       </div>
       <div class="mc-pillar">
-        <div class="mc-pillar-num" data-i18n="mc-p3-num">Unified</div>
-        <p data-i18n="mc-p3-desc">One seed phrase, one interface, one address book. All chains. No app-switching, no separate installs.</p>
+        <div class="mc-pillar-num" data-i18n="mc-p3-num">Modular</div>
+        <p data-i18n="mc-p3-desc">Import as many wallets as you need — each with its own seed phrase, its own chain, its own identity. Nothing is shared. Nothing is assumed. A breach in one module leaves every other untouched.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROTOCOLS ===== -->
+  <section class="section protocols" id="protocols">
+    <div class="section-label" data-i18n="proto-label">/ PROTOCOL SUPPORT</div>
+    <div class="proto-header">
+      <h2 class="section-title" data-i18n-html="proto-title">Built for today.<br/><span class="accent">Ready for tomorrow.</span></h2>
+      <p class="proto-lead" data-i18n="proto-lead">Spectra tracks every major protocol upgrade across every supported chain — so when networks evolve, your wallet evolves with them. No waiting for patches. No scrambling for workarounds.</p>
+    </div>
+
+    <div class="proto-grid">
+      <div class="proto-card">
+        <div class="proto-chain-tag">LITECOIN</div>
+        <h3 class="proto-name">MWEB</h3>
+        <p data-i18n="proto-1-desc">MimbleWimble Extension Blocks shield transaction amounts and participant addresses with cryptographic proofs — full opt-in privacy without forking the base layer.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">BITCOIN</div>
+        <h3 class="proto-name">Taproot + Schnorr</h3>
+        <p data-i18n="proto-2-desc">BIP-340/341/342: Schnorr signatures enable MuSig2 key aggregation so a complex multisig is indistinguishable from a single-sig on-chain, improving privacy and reducing fees.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">BITCOIN · LITECOIN</div>
+        <h3 class="proto-name">Lightning Network</h3>
+        <p data-i18n="proto-3-desc">Payment channels settle instantly off-chain for sub-cent fees. Spectra runs a native LN node or connects to a remote LSP — zero custody, instant settlement, your choice.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">ETHEREUM</div>
+        <h3 class="proto-name">ERC-4337</h3>
+        <p data-i18n="proto-4-desc">Account Abstraction turns every wallet into a smart contract: gas sponsorship, batched transactions, and programmable recovery — without any protocol fork required.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">MONERO</div>
+        <h3 class="proto-name">RingCT + Bulletproofs+</h3>
+        <p data-i18n="proto-5-desc">Ring Confidential Transactions hide amounts via Pedersen commitments. Bulletproofs+ shrinks proof sizes by over 96% versus naïve range proofs, keeping blocks lean.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">CROSS-CHAIN</div>
+        <h3 class="proto-name">PSBT v2 — BIP-370</h3>
+        <p data-i18n="proto-6-desc">The upgraded Partially Signed Bitcoin Transaction format adds per-input and per-output roles, enabling cleaner multi-party signing workflows across hardware wallets and air-gapped setups.</p>
       </div>
     </div>
   </section>
@@ -370,7 +424,7 @@
         <div class="dl-meta" data-i18n="dl-lin-meta">AppImage · deb · rpm · Flatpak</div>
         <div class="dl-size">34.7 MB</div>
       </a>
-      <a class="dl-card" href="#">
+      <a class="dl-card" href="https://github.com/Sheny6n/SpectraWallet" target="_blank" rel="noopener noreferrer">
         <div class="dl-os">Source</div>
         <div class="dl-meta" data-i18n="dl-src-meta">git clone &amp; build it yourself</div>
         <div class="dl-size" data-i18n="dl-src-size">~6 min on a laptop</div>
@@ -415,11 +469,7 @@
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-brand">
-        <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
-          <rect x="2" y="2" width="28" height="28" fill="#e30613"/>
-          <rect x="14" y="6" width="4" height="20" fill="#fff"/>
-          <rect x="6" y="14" width="20" height="4" fill="#fff"/>
-        </svg>
+        <span class="brand-mark brand-mark--lg" aria-hidden="true">S</span>
         <p>SPECTRA</p>
         <small data-i18n="footer-tagline">The Swiss Army Knife of Crypto Wallets.</small>
       </div>
