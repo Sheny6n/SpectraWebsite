@@ -12,7 +12,7 @@ const translations = {
   // ----------------------------------------------------------
   en: {
     'nav-ethos': 'Ethos', 'nav-features': 'Features', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnostics',
-    'nav-legacy': 'Legacy', 'nav-download': 'Download', 'nav-donate': 'Donate',
+    'nav-legacy': 'Legacy', 'nav-download': 'Download', 'nav-docs': 'Docs', 'nav-donate': 'Donate',
     'hero-title': 'The Swiss<br/>Army Knife<br/><span class="accent">of crypto<br/>wallets.</span>',
     'hero-sub': 'Hold. Send. Stake. Recover.<br/>No trading. No swaps. No "buy with credit card."<br/>No surface area for thieves to crawl through.',
     'hero-btn-download': 'Download Spectra', 'hero-btn-manual': 'Read the manual →',
@@ -92,7 +92,7 @@ const translations = {
   // ----------------------------------------------------------
   zh: {
     'nav-ethos': '理念', 'nav-features': '功能', 'nav-tech': '技术', 'nav-diagnostics': '诊断',
-    'nav-legacy': '兼容性', 'nav-download': '下载', 'nav-donate': '捐赠',
+    'nav-legacy': '兼容性', 'nav-download': '下载', 'nav-docs': '文档', 'nav-donate': '捐赠',
     'hero-title': '加密货币<br/>世界的<br/><span class="accent">瑞士军刀。</span>',
     'hero-sub': '持有。转账。质押。恢复。<br/>不交易，不换币，不"用信用卡买币"。<br/>没有多余的入口，让黑客无缝可钻。',
     'hero-btn-download': '下载 Spectra', 'hero-btn-manual': '阅读文档 →',
@@ -172,7 +172,7 @@ const translations = {
   // ----------------------------------------------------------
   fr: {
     'nav-ethos': 'Philosophie', 'nav-features': 'Fonctions', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnostics',
-    'nav-legacy': 'Compatibilité', 'nav-download': 'Télécharger', 'nav-donate': 'Faire un don',
+    'nav-legacy': 'Compatibilité', 'nav-download': 'Télécharger', 'nav-docs': 'Docs', 'nav-donate': 'Faire un don',
     'hero-title': 'Le couteau<br/>suisse des<br/><span class="accent">portefeuilles<br/>crypto.</span>',
     'hero-sub': 'Conserver. Envoyer. Staker. Récupérer.<br/>Sans trading, sans swap, sans « acheter avec une carte de crédit ».<br/>Aucune surface d\'attaque pour les voleurs.',
     'hero-btn-download': 'Télécharger Spectra', 'hero-btn-manual': 'Lire la documentation →',
@@ -252,7 +252,7 @@ const translations = {
   // ----------------------------------------------------------
   es: {
     'nav-ethos': 'Filosofía', 'nav-features': 'Funciones', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnósticos',
-    'nav-legacy': 'Compatibilidad', 'nav-download': 'Descargar', 'nav-donate': 'Donar',
+    'nav-legacy': 'Compatibilidad', 'nav-download': 'Descargar', 'nav-docs': 'Docs', 'nav-donate': 'Donar',
     'hero-title': 'La navaja suiza<br/>de las<br/><span class="accent">carteras crypto.</span>',
     'hero-sub': 'Guarda. Envía. Haz staking. Recupera.<br/>Sin trading, sin swaps, sin «comprar con tarjeta de crédito».<br/>Sin superficie de ataque para ladrones.',
     'hero-btn-download': 'Descargar Spectra', 'hero-btn-manual': 'Leer el manual →',
@@ -332,7 +332,7 @@ const translations = {
   // ----------------------------------------------------------
   pt: {
     'nav-ethos': 'Filosofia', 'nav-features': 'Funcionalidades', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnósticos',
-    'nav-legacy': 'Compatibilidade', 'nav-download': 'Baixar', 'nav-donate': 'Doar',
+    'nav-legacy': 'Compatibilidade', 'nav-download': 'Baixar', 'nav-docs': 'Docs', 'nav-donate': 'Doar',
     'hero-title': 'O canivete suíço<br/>das<br/><span class="accent">carteiras crypto.</span>',
     'hero-sub': 'Guardar. Enviar. Fazer staking. Recuperar.<br/>Sem trading, sem swaps, sem «comprar com cartão de crédito».<br/>Sem superfície de ataque para ladrões.',
     'hero-btn-download': 'Baixar Spectra', 'hero-btn-manual': 'Ler o manual →',

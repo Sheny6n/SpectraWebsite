@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Docs — Spectra Wallet</title>
+  <meta name="description" content="Spectra documentation: setup, wallet management, staking, recovery, plugin SDK, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       SPECTRA DOCS — design tokens (mirrors main site)
+       ============================================================ */
+    :root {
+      --bg:       #0a0a0b;
+      --bg-2:     #111113;
+      --bg-3:     #16161a;
+      --line:     #1f1f24;
+      --line-2:   #2a2a30;
+      --fg:       #f3f3f1;
+      --fg-2:     #b6b6b0;
+      --fg-3:     #6e6e68;
+      --green:    #4ade80;
+      --yellow:   #facc15;
+      --serif:    'Inter', system-ui, -apple-system, sans-serif;
+      --mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --sidebar:  256px;
+      --rainbow:  linear-gradient(90deg, #b3005e, #b33000, #8f7000, #007a44, #0070a8, #6600aa);
+      --rainbow-diag: linear-gradient(135deg, #b3005e 0%, #b33000 20%, #8f7000 40%, #007a44 60%, #0070a8 80%, #6600aa 100%);
+      --s-pink:   #b3005e;
+      --s-violet: #7733aa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    button { font: inherit; cursor: pointer; }
+
+    /* gradient text helper */
+    .accent {
+      background: var(--rainbow);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .mono { font-family: var(--mono); }
+
+    /* ============================================================
+       TOP NAV
+       ============================================================ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+      height: 56px;
+      background: rgba(10,10,11,0.82);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 13px;
+    }
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px; height: 26px;
+      background: var(--rainbow);
+      color: #fff;
+      font-weight: 900;
+      font-size: 15px;
+      border-radius: 5px;
+    }
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--line-2);
+    }
+    .nav-section {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--fg-3);
+      letter-spacing: 0.1em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 13px;
+    }
+    .nav-right a {
+      color: var(--fg-3);
+      transition: color .2s;
+    }
+    .nav-right a:hover { color: var(--fg); }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      font-size: 12.5px;
+      color: var(--fg-2) !important;
+      transition: all .2s;
+    }
+    .nav-back:hover {
+      border-color: var(--fg-3);
+      color: var(--fg) !important;
+    }
+
+    /* search bar */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: var(--bg-2);
+      border: 1px solid var(--line-2);
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--fg-3);
+      cursor: text;
+      min-width: 200px;
+      transition: border-color .2s;
+    }
+    .nav-search:hover { border-color: var(--fg-3); }
+    .nav-search kbd {
+      margin-left: auto;
+      padding: 2px 6px;
+      background: var(--bg-3);
+      border: 1px solid var(--line-2);
+      border-radius: 4px;
+      font-size: 10px;
+      color: var(--fg-3);
+    }
+
+    /* ============================================================
+       LAYOUT — sidebar + content
+       ============================================================ */
+    .docs-layout {
+      display: flex;
+      min-height: calc(100vh - 56px);
+    }
+
+    /* ============================================================
+       SIDEBAR
+       ============================================================ */
+    .sidebar {
+      width: var(--sidebar);
+      flex-shrink: 0;
+      border-right: 1px solid var(--line);
+      padding: 32px 0 80px;
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line-2) transparent;
+    }
+
+    .sidebar-group {
+      margin-bottom: 28px;
+    }
+    .sidebar-group-label {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+      padding: 0 20px 10px;
+      display: block;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 20px;
+      font-size: 13.5px;
+      color: var(--fg-2);
+      transition: all .15s;
+      border-left: 2px solid transparent;
+      margin-left: -1px;
+    }
+    .sidebar-link:hover {
+      color: var(--fg);
+      background: var(--bg-2);
+    }
+    .sidebar-link.active {
+      color: var(--fg);
+      border-left-color: var(--s-pink);
+      background: var(--bg-2);
+      font-weight: 600;
+    }
+    .sidebar-link .soon {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+      padding: 2px 6px;
+      border: 1px solid var(--line-2);
+      border-radius: 3px;
+      color: var(--fg-3);
+      flex-shrink: 0;
+    }
+    .sidebar-link .wip {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #7a5900;
+      background: rgba(250,204,21,.1);
+      border: 1px solid rgba(250,204,21,.2);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       MAIN CONTENT
+       ============================================================ */
+    .docs-main {
+      flex: 1;
+      min-width: 0;
+      padding: 56px clamp(32px, 5vw, 80px) 100px;
+      max-width: 900px;
+    }
+
+    /* breadcrumb */
+    .breadcrumb {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--fg-3);
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .breadcrumb a { color: var(--fg-3); transition: color .2s; }
+    .breadcrumb a:hover { color: var(--fg); }
+    .breadcrumb span { opacity: .4; }
+
+    /* page header */
+    .page-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--fg-3);
+      margin-bottom: 14px;
+    }
+    .page-title {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .page-lead {
+      font-size: 18px;
+      color: var(--fg-2);
+      max-width: 640px;
+      line-height: 1.65;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* wip banner */
+    .wip-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: rgba(250,204,21,.06);
+      border: 1px solid rgba(250,204,21,.2);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 48px;
+    }
+    .wip-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+    .wip-banner p {
+      font-size: 14.5px;
+      color: var(--fg-2);
+      line-height: 1.6;
+    }
+    .wip-banner strong { color: var(--fg); font-weight: 600; }
+
+    /* section heading inside content */
+    .content-section {
+      margin-bottom: 64px;
+    }
+    .content-section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* doc category cards */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .doc-card {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all .2s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .doc-card:hover {
+      border-color: var(--line-2);
+      background: var(--bg-3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+    .doc-card-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+    .doc-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .doc-card p {
+      font-size: 13.5px;
+      color: var(--fg-2);
+      line-height: 1.55;
+    }
+    .doc-card .doc-status {
+      margin-top: auto;
+      padding-top: 14px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      color: var(--fg-3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .doc-card .doc-status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--line-2);
+      flex-shrink: 0;
+    }
+    .doc-card.ready .doc-status { color: var(--green); }
+    .doc-card.ready .doc-status::before { background: var(--green); box-shadow: 0 0 6px rgba(74,222,128,.5); }
+    .doc-card.wip .doc-status { color: var(--yellow); }
+    .doc-card.wip .doc-status::before { background: var(--yellow); }
+
+    /* quick-links strip */
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 64px;
+    }
+    .quick-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--fg-2);
+      transition: all .2s;
+    }
+    .quick-link:hover {
+      color: var(--fg);
+      border-color: var(--line-2);
+      background: var(--bg-3);
+    }
+    .quick-link .arrow { font-size: 11px; opacity: .5; }
+
+    /* code block placeholder */
+    .code-block {
+      background: #0c0c0e;
+      border: 1px solid var(--line-2);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .code-block-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: #15151a;
+      border-bottom: 1px solid var(--line-2);
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--fg-3);
+    }
+    .code-block pre {
+      padding: 20px 24px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: #d4d4d2;
+      line-height: 1.65;
+      overflow-x: auto;
+    }
+    .t-dim    { color: var(--fg-3); }
+    .t-ok     { color: var(--green); }
+    .t-accent { color: #7dd3fc; }
+    .t-str    { color: #a8d8a8; }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .docs-footer {
+      border-top: 1px solid var(--line);
+      padding: 32px clamp(32px, 5vw, 80px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12.5px;
+      color: var(--fg-3);
+    }
+    .docs-footer a { color: var(--fg-3); transition: color .2s; }
+    .docs-footer a:hover { color: var(--fg); }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 860px) {
+      .sidebar { display: none; }
+      .doc-grid { grid-template-columns: 1fr; }
+      .nav-search { display: none; }
+    }
+    @media (max-width: 480px) {
+      .docs-main { padding: 40px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP NAV ===== -->
+  <header class="nav">
+    <div class="nav-left">
+      <a class="brand" href="../index.html" aria-label="Spectra home">
+        <span class="brand-mark">S</span>
+        <span>SPECTRA</span>
+      </a>
+      <div class="nav-divider"></div>
+      <span class="nav-section">DOCS</span>
+    </div>
+    <div class="nav-right">
+      <div class="nav-search" role="search" aria-label="Search documentation">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span>Search docs…</span>
+        <kbd>/</kbd>
+      </div>
+      <a href="https://github.com/Sheny6n/SpectraWallet" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="nav-back" href="../index.html">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to site
+      </a>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" aria-label="Documentation navigation">
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Overview</span>
+        <a class="sidebar-link active" href="#">Introduction</a>
+        <a class="sidebar-link" href="#">Quick start <span class="wip">WIP</span></a>
+        <a class="sidebar-link" href="#">Architecture</a>
+        <a class="sidebar-link" href="#">FAQ <span class="soon">soon</span></a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Wallet Setup</span>
+        <a class="sidebar-link" href="#">Installation <span class="wip">WIP</span></a>
+        <a class="sidebar-link" href="#">Creating a wallet <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Importing a wallet <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Hardware wallets <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Watch-only mode <span class="soon">soon</span></a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Sending &amp; Receiving</span>
+        <a class="sidebar-link" href="#">Addresses <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Sending funds <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Fee control <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">UTXO management <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Lightning payments <span class="soon">soon</span></a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Staking</span>
+        <a class="sidebar-link" href="#">Ethereum <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Solana <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Polkadot &amp; Cosmos <span class="soon">soon</span></a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Security</span>
+        <a class="sidebar-link" href="#">Threat model <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Multisig &amp; PSBT <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Air-gapped signing <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Encrypted backups <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Tor &amp; custom RPC <span class="soon">soon</span></a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Recovery</span>
+        <a class="sidebar-link" href="#">Legacy wallet imports <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Seed path grinding <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Password recovery <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Fork &amp; airdrop claims <span class="soon">soon</span></a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Advanced</span>
+        <a class="sidebar-link" href="#">Diagnostics panel <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Log viewer &amp; export <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Reproducible builds <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Verifying the binary <span class="soon">soon</span></a>
+      </div>
+
+      <div class="sidebar-group">
+        <span class="sidebar-group-label">Plugin SDK</span>
+        <a class="sidebar-link" href="#">Overview <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">API reference <span class="soon">soon</span></a>
+        <a class="sidebar-link" href="#">Example plugins <span class="soon">soon</span></a>
+      </div>
+
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="docs-main">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Spectra</a>
+        <span>/</span>
+        <a href="#">Docs</a>
+        <span>/</span>
+        Introduction
+      </nav>
+
+      <div class="page-label">/ DOCUMENTATION</div>
+      <h1 class="page-title">Welcome to <span class="accent">Spectra</span> Docs</h1>
+      <p class="page-lead">
+        Everything you need to install, configure, and get the most out of Spectra —
+        the Swiss Army Knife of crypto wallets. Guides, references, and the full plugin SDK.
+      </p>
+
+      <!-- WIP notice -->
+      <div class="wip-banner" role="note">
+        <span class="wip-icon">🚧</span>
+        <p>
+          <strong>Documentation is a work in progress.</strong>
+          Spectra is in early development and the docs are being written alongside the wallet.
+          Pages marked <span class="mono" style="font-size:11px; padding:1px 6px; background:rgba(250,204,21,.1); border:1px solid rgba(250,204,21,.2); border-radius:3px; color:#a07800;">WIP</span>
+          are partially drafted.
+          Pages marked <span class="mono" style="font-size:11px; padding:1px 6px; background:var(--bg-3); border:1px solid var(--line-2); border-radius:3px; color:var(--fg-3);">SOON</span>
+          are planned but not yet started.
+          Contributions welcome on <a href="https://github.com/Sheny6n/SpectraWallet" target="_blank" rel="noopener noreferrer" style="color:var(--fg); text-decoration:underline; text-underline-offset:3px;">GitHub</a>.
+        </p>
+      </div>
+
+      <!-- Quick links -->
+      <div class="quick-links" aria-label="Quick links">
+        <a class="quick-link" href="#">Get started — install Spectra <span class="arrow">↗</span></a>
+        <a class="quick-link" href="#">Import an existing wallet <span class="arrow">↗</span></a>
+        <a class="quick-link" href="#">Verify the binary <span class="arrow">↗</span></a>
+        <a class="quick-link" href="#">Plugin SDK overview <span class="arrow">↗</span></a>
+      </div>
+
+      <!-- All sections grid -->
+      <div class="content-section">
+        <h2>All sections</h2>
+        <div class="doc-grid">
+
+          <div class="doc-card wip">
+            <div class="doc-card-icon">⚙️</div>
+            <h3>Wallet Setup</h3>
+            <p>Install Spectra, create or import a wallet, connect hardware signers, and set up watch-only monitoring.</p>
+            <div class="doc-status">IN PROGRESS</div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-card-icon">↕️</div>
+            <h3>Sending &amp; Receiving</h3>
+            <p>Address formats, fee control, UTXO selection, RBF, CPFP, and native Lightning Network payments.</p>
+            <div class="doc-status">COMING SOON</div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-card-icon">🔒</div>
+            <h3>Security</h3>
+            <p>Threat model, multisig &amp; PSBT workflows, air-gapped signing, Tor routing, and encrypted backups.</p>
+            <div class="doc-status">COMING SOON</div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-card-icon">🔑</div>
+            <h3>Recovery</h3>
+            <p>Import legacy wallets, scan every derivation path, recover forgotten passwords, and claim forks &amp; airdrops.</p>
+            <div class="doc-status">COMING SOON</div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-card-icon">📊</div>
+            <h3>Staking</h3>
+            <p>Non-custodial staking for ETH, SOL, ATOM, DOT and more. Your validators, your keys, your rewards.</p>
+            <div class="doc-status">COMING SOON</div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-card-icon">🔍</div>
+            <h3>Diagnostics</h3>
+            <p>Live health checks, the structured log viewer, one-click auto-repair, and exportable bug reports.</p>
+            <div class="doc-status">COMING SOON</div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-card-icon">🔧</div>
+            <h3>Advanced</h3>
+            <p>Reproducible builds, binary verification, custom RPC endpoints, and the full self-hosted node setup.</p>
+            <div class="doc-status">COMING SOON</div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-card-icon">🧩</div>
+            <h3>Plugin SDK</h3>
+            <p>Build themes, panels, and chain integrations on top of Spectra. API reference, hooks, and example plugins.</p>
+            <div class="doc-status">COMING SOON</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quick-start stub -->
+      <div class="content-section">
+        <h2>Quick start</h2>
+        <p style="color:var(--fg-2); font-size:15px; margin-bottom:20px; line-height:1.65;">
+          Download the binary for your platform, verify the signature, and run. No installer, no accounts, no setup wizard.
+        </p>
+
+        <div class="code-block">
+          <div class="code-block-bar">
+            <span>terminal</span>
+            <span style="opacity:.4">macOS / Linux</span>
+          </div>
+          <pre><span class="t-dim"># 1. Verify the signature before running anything</span>
+<span class="t-accent">$</span> gpg --verify spectra-0.1.0.dmg.asc spectra-0.1.0.dmg
+
+<span class="t-dim"># 2. Or build from source (~6 min)</span>
+<span class="t-accent">$</span> git clone https://github.com/Sheny6n/SpectraWallet
+<span class="t-accent">$</span> cd SpectraWallet
+<span class="t-accent">$</span> make build
+
+<span class="t-ok">✓ Build reproducible. sha256: 7f3a…c2e9</span></pre>
+        </div>
+
+        <p style="color:var(--fg-3); font-size:13.5px; line-height:1.6;">
+          Full installation instructions, checksums, and signing key fingerprints will be published here
+          once the first stable release is cut.
+          Track progress on <a href="https://github.com/Sheny6n/SpectraWallet" target="_blank" rel="noopener noreferrer" style="color:var(--fg-2); text-decoration:underline; text-underline-offset:3px; transition:color .2s;">GitHub</a>.
+        </p>
+      </div>
+
+      <!-- About section -->
+      <div class="content-section">
+        <h2>About this documentation</h2>
+        <p style="color:var(--fg-2); font-size:15px; line-height:1.65; max-width:640px;">
+          These docs are open source and live in the same repository as the wallet.
+          If you spot an error, want to add a guide, or want to translate a page —
+          open a pull request. The source for every page is a plain HTML file with
+          no build step required.
+        </p>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="docs-footer">
+    <span>© 2026 Spectra Contributors · GPL-3.0</span>
+    <span style="display:flex; gap:24px;">
+      <a href="https://github.com/Sheny6n/SpectraWallet" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="../index.html">Back to site</a>
+    </span>
+  </footer>
+
+</body>
+</html>
