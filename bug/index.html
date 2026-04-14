@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bug Tracker — Spectra Wallet</title>
+  <meta name="description" content="Report bugs and browse known issues for Spectra Wallet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0a0a0b;
+      --bg-2:     #111113;
+      --bg-3:     #16161a;
+      --line:     #1f1f24;
+      --line-2:   #2a2a30;
+      --fg:       #f3f3f1;
+      --fg-2:     #b6b6b0;
+      --fg-3:     #6e6e68;
+      --green:    #4ade80;
+      --yellow:   #facc15;
+      --red:      #f87171;
+      --serif:    'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --rainbow:  linear-gradient(90deg, #b3005e, #b33000, #8f7000, #007a44, #0070a8, #6600aa);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .mono { font-family: var(--mono); }
+    .accent {
+      background: var(--rainbow);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* nav */
+    nav.top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,10,11,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    nav.top .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+    nav.top .links a { color: var(--fg-2); margin-left: 28px; font-size: 14px; transition: color .2s; }
+    nav.top .links a:hover { color: var(--fg); }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 64px 40px 120px;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: var(--fg-3);
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .lede {
+      color: var(--fg-2);
+      max-width: 640px;
+      margin-bottom: 48px;
+      font-size: 17px;
+    }
+
+    /* quick-links row */
+    .quick {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+    .quick a {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg-2);
+      transition: border-color .2s, transform .2s, background .2s;
+    }
+    .quick a:hover { border-color: var(--line-2); transform: translateY(-2px); background: var(--bg-3); }
+    .quick .q-label { font-size: 12px; font-family: var(--mono); letter-spacing: .12em; color: var(--fg-3); }
+    .quick .q-title { font-weight: 600; font-size: 15px; }
+
+    /* section */
+    section { margin-bottom: 64px; }
+    h2 {
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2::before {
+      content: "";
+      width: 4px; height: 20px;
+      background: var(--rainbow);
+      border-radius: 2px;
+    }
+
+    /* form */
+    form {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+    }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+    .field input, .field select, .field textarea {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--fg);
+      font: inherit;
+      transition: border-color .2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--line-2);
+    }
+    .field textarea { min-height: 120px; resize: vertical; font-family: var(--mono); font-size: 14px; }
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .btn {
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: 1px solid var(--line-2);
+      background: var(--bg-3);
+      color: var(--fg);
+      font-weight: 500;
+      transition: all .2s;
+    }
+    .btn:hover { border-color: transparent; background: linear-gradient(135deg, #b3005e, #7733aa); color: #fff; }
+    .btn-ghost { background: transparent; }
+    .note { color: var(--fg-3); font-size: 13px; }
+
+    /* issue list */
+    .issues { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .issue {
+      display: grid;
+      grid-template-columns: 80px 1fr 110px 100px;
+      gap: 16px;
+      padding: 16px 20px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-2);
+      transition: background .15s;
+    }
+    .issue:last-child { border-bottom: none; }
+    .issue:hover { background: var(--bg-3); }
+    .issue .num { font-family: var(--mono); font-size: 13px; color: var(--fg-3); }
+    .issue .title { font-weight: 500; }
+    .issue .sev {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      justify-self: start;
+    }
+    .sev-crit { background: rgba(248,113,113,.12); color: var(--red); }
+    .sev-high { background: rgba(250,204,21,.12); color: var(--yellow); }
+    .sev-med  { background: rgba(74,222,128,.12); color: var(--green); }
+    .sev-low  { background: rgba(180,180,180,.08); color: var(--fg-2); }
+    .issue .status { font-family: var(--mono); font-size: 12px; color: var(--fg-3); text-align: right; }
+
+    .footer { color: var(--fg-3); font-size: 13px; padding: 28px 40px; border-top: 1px solid var(--line); text-align: center; }
+
+    @media (max-width: 700px) {
+      .quick { grid-template-columns: 1fr; }
+      .row-2 { grid-template-columns: 1fr; }
+      .issue { grid-template-columns: 1fr; gap: 6px; }
+      .issue .status { text-align: left; }
+      nav.top { padding: 16px 20px; }
+      main { padding: 40px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top">
+    <a href="../" class="brand">Spectra<span class="accent">.</span></a>
+    <div class="links">
+      <a href="../">← Back to site</a>
+      <a href="../docs/">Docs</a>
+      <a href="https://github.com/Sheny6n/SpectraWallet/issues" target="_blank" rel="noopener">GitHub issues ↗</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="label">/ BUG TRACKER</div>
+    <h1>Found something <span class="accent">broken?</span></h1>
+    <p class="lede">
+      Spectra is open source and maintained by contributors in their spare time. Clear,
+      reproducible reports are the single most valuable thing you can send us. No account
+      required — submit below or open a GitHub issue directly.
+    </p>
+
+    <div class="quick">
+      <a href="https://github.com/Sheny6n/SpectraWallet/issues" target="_blank" rel="noopener">
+        <span class="q-label">GITHUB</span>
+        <span class="q-title">Browse all issues ↗</span>
+      </a>
+      <a href="#report">
+        <span class="q-label">FORM</span>
+        <span class="q-title">File a new report ↓</span>
+      </a>
+      <a href="#known">
+        <span class="q-label">KNOWN</span>
+        <span class="q-title">Known issues ↓</span>
+      </a>
+    </div>
+
+    <section id="report">
+      <h2>Report a bug</h2>
+      <form id="bug-form">
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" placeholder="Short summary (e.g. 'Ledger signing fails on Solana after v0.1.0')" required />
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="severity">Severity</label>
+            <select id="severity" name="severity">
+              <option value="low">Low — cosmetic / minor</option>
+              <option value="medium" selected>Medium — functional issue</option>
+              <option value="high">High — data or funds at risk</option>
+              <option value="critical">Critical — loss / exploit</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="component">Component</label>
+            <select id="component" name="component">
+              <option>Wallet core</option>
+              <option>Sending / receiving</option>
+              <option>Staking</option>
+              <option>Recovery / seed</option>
+              <option>Hardware wallet</option>
+              <option>UI / display</option>
+              <option>Plugin SDK</option>
+              <option>Docs</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="version">Spectra version</label>
+            <input id="version" name="version" type="text" placeholder="0.1.0" value="0.1.0" />
+          </div>
+          <div class="field">
+            <label for="os">OS</label>
+            <input id="os" name="os" type="text" placeholder="macOS 14.4 / Windows 11 / Ubuntu 24.04" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">What happened?</label>
+          <textarea id="description" name="description" placeholder="Describe the bug. What did you expect? What did you actually get?" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="steps">Steps to reproduce</label>
+          <textarea id="steps" name="steps" placeholder="1. Open Spectra&#10;2. Click …&#10;3. Observe …"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="logs">Logs (optional, redact anything sensitive)</label>
+          <textarea id="logs" name="logs" placeholder="Paste relevant log output here"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn">Open as GitHub issue ↗</button>
+          <button type="button" class="btn btn-ghost" id="copy-btn">Copy as Markdown</button>
+          <span class="note mono" id="status"></span>
+        </div>
+        <p class="note">
+          Nothing is sent to any Spectra server. Submitting opens GitHub with your report pre-filled —
+          you review it before anything is posted.
+        </p>
+      </form>
+    </section>
+
+    <section id="known">
+      <h2>Known issues</h2>
+      <div class="issues">
+        <div class="issue">
+          <span class="num">#142</span>
+          <span class="title">Ledger: signing stalls on Solana after firmware 1.5.0</span>
+          <span class="sev sev-high">High</span>
+          <span class="status">Investigating</span>
+        </div>
+        <div class="issue">
+          <span class="num">#138</span>
+          <span class="title">Dark mode flicker on first paint (Windows)</span>
+          <span class="sev sev-low">Low</span>
+          <span class="status">Triaged</span>
+        </div>
+        <div class="issue">
+          <span class="num">#131</span>
+          <span class="title">QR scanner drops frames on low-light webcam input</span>
+          <span class="sev sev-med">Medium</span>
+          <span class="status">Fix in 0.1.1</span>
+        </div>
+        <div class="issue">
+          <span class="num">#127</span>
+          <span class="title">Mnemonic field autocompletes from browser on some Linux builds</span>
+          <span class="sev sev-high">High</span>
+          <span class="status">Fix in 0.1.1</span>
+        </div>
+        <div class="issue">
+          <span class="num">#119</span>
+          <span class="title">Diagnostics export includes timezone when "redact" is checked</span>
+          <span class="sev sev-med">Medium</span>
+          <span class="status">Open</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Before you file</h2>
+      <p class="lede" style="margin-bottom: 0;">
+        Please check the <a href="https://github.com/Sheny6n/SpectraWallet/issues" target="_blank" rel="noopener" style="border-bottom: 1px solid var(--line-2);">open issues</a> first — your bug may already be tracked.
+        For suspected security vulnerabilities, do <b>not</b> file a public issue: email
+        <span class="mono" style="color: var(--fg)">security@spectrawallet.org</span> with a PGP-encrypted report.
+      </p>
+    </section>
+  </main>
+
+  <div class="footer">
+    Spectra · GPL-3.0 · <a href="../" style="border-bottom: 1px solid var(--line-2)">spectrawallet.org</a>
+  </div>
+
+  <script>
+    (() => {
+      const form = document.getElementById('bug-form');
+      const status = document.getElementById('status');
+      const copyBtn = document.getElementById('copy-btn');
+      const REPO = 'Sheny6n/SpectraWallet';
+
+      function buildMarkdown(data) {
+        return `**Severity:** ${data.severity}
+**Component:** ${data.component}
+**Version:** ${data.version}
+**OS:** ${data.os || '—'}
+
+### Description
+${data.description}
+
+### Steps to reproduce
+${data.steps || '—'}
+
+### Logs
+${data.logs ? '```\n' + data.logs + '\n```' : '—'}`;
+      }
+
+      function readForm() {
+        const fd = new FormData(form);
+        return Object.fromEntries(fd.entries());
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const d = readForm();
+        const body = buildMarkdown(d);
+        const url = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent('[' + d.severity.toUpperCase() + '] ' + d.title)}&body=${encodeURIComponent(body)}&labels=bug`;
+        window.open(url, '_blank', 'noopener');
+        status.textContent = 'Opened in new tab — review before posting.';
+      });
+
+      copyBtn.addEventListener('click', async () => {
+        const d = readForm();
+        const md = `# ${d.title || '(no title)'}\n\n` + buildMarkdown(d);
+        try {
+          await navigator.clipboard.writeText(md);
+          status.textContent = 'Copied to clipboard.';
+        } catch {
+          status.textContent = 'Copy failed — clipboard blocked.';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

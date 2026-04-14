@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Wallet — Spectra</title>
+  <meta name="description" content="Spectra Web Wallet — a browser-based wallet experience, coming soon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #0a0a0b;
+      --bg-2:    #111113;
+      --bg-3:    #16161a;
+      --line:    #1f1f24;
+      --line-2:  #2a2a30;
+      --fg:      #f3f3f1;
+      --fg-2:    #b6b6b0;
+      --fg-3:    #6e6e68;
+      --green:   #4ade80;
+      --yellow:  #facc15;
+      --serif:   'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      --rainbow: linear-gradient(90deg, #b3005e, #b33000, #8f7000, #007a44, #0070a8, #6600aa);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .mono { font-family: var(--mono); }
+    .accent {
+      background: var(--rainbow);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav.top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,10,11,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    nav.top .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+    nav.top .links a { color: var(--fg-2); margin-left: 28px; font-size: 14px; transition: color .2s; }
+    nav.top .links a:hover { color: var(--fg); }
+
+    main {
+      flex: 1;
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 96px 40px 80px;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: var(--fg-3);
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .label .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 10px rgba(250,204,21,.55);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 50% { opacity: .35; } }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    .lede {
+      color: var(--fg-2);
+      max-width: 640px;
+      margin-bottom: 56px;
+      font-size: 18px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+    .feat {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--bg-2);
+      transition: border-color .2s, transform .2s;
+    }
+    .feat:hover { border-color: var(--line-2); transform: translateY(-2px); }
+    .feat .num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--fg-3);
+      margin-bottom: 10px;
+    }
+    .feat h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .feat p  { color: var(--fg-2); font-size: 14px; line-height: 1.5; }
+
+    .notify {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background:
+        radial-gradient(120% 90% at 100% 0%, rgba(179,0,94,0.10), transparent 55%),
+        var(--bg-2);
+      margin-bottom: 48px;
+    }
+    .notify h2 { font-size: 20px; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .notify p  { color: var(--fg-2); font-size: 14px; margin-bottom: 18px; }
+    .notify form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .notify input {
+      flex: 1; min-width: 200px;
+      background: var(--bg);
+      border: 1px solid var(--line-2);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: var(--fg);
+      font: inherit;
+      transition: border-color .2s;
+    }
+    .notify input:focus { outline: none; border-color: var(--fg-3); }
+    .notify button {
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, #b3005e, #7733aa);
+      color: #fff;
+      font-weight: 500;
+      transition: filter .2s, transform .2s;
+    }
+    .notify button:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .notify .note { color: var(--fg-3); font-size: 12px; margin-top: 10px; margin-bottom: 0; }
+
+    .roadmap {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .roadmap h2 { font-size: 18px; padding: 18px 22px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+    .row {
+      display: grid;
+      grid-template-columns: 120px 1fr 110px;
+      gap: 16px;
+      padding: 14px 22px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .row:last-child { border-bottom: none; }
+    .row .stage { font-family: var(--mono); font-size: 12px; color: var(--fg-3); letter-spacing: .08em; }
+    .row .status {
+      justify-self: start;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .s-done { background: rgba(74,222,128,.12); color: var(--green); }
+    .s-prog { background: rgba(250,204,21,.12); color: var(--yellow); }
+    .s-todo { background: rgba(180,180,180,.08); color: var(--fg-2); }
+
+    .footer { color: var(--fg-3); font-size: 13px; padding: 28px 40px; border-top: 1px solid var(--line); text-align: center; }
+
+    @media (max-width: 720px) {
+      .features { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; gap: 6px; }
+      nav.top { padding: 16px 20px; }
+      main { padding: 56px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top">
+    <a href="../" class="brand">Spectra<span class="accent">.</span></a>
+    <div class="links">
+      <a href="../">← Back to site</a>
+      <a href="../docs/">Docs</a>
+      <a href="../#download">Download desktop</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="label">
+      <span class="dot"></span>
+      <span>/ WEB WALLET · IN DEVELOPMENT</span>
+    </div>
+    <h1>Spectra, <span class="accent">in the browser.</span></h1>
+    <p class="lede">
+      A browser-based Spectra wallet is on the way — the same open-source core,
+      the same no-telemetry guarantees, running client-side in any modern browser.
+      No accounts, no tracking, no SaaS.
+    </p>
+
+    <div class="features">
+      <div class="feat">
+        <div class="num">/ 01</div>
+        <h3>Client-side only</h3>
+        <p>Keys are generated, stored, and signed with entirely in your browser. The server never sees them.</p>
+      </div>
+      <div class="feat">
+        <div class="num">/ 02</div>
+        <h3>Reproducible builds</h3>
+        <p>Every release is pinned, hashed, and signed. Verify what you're running before you run it.</p>
+      </div>
+      <div class="feat">
+        <div class="num">/ 03</div>
+        <h3>Self-host ready</h3>
+        <p>Static bundle. Host it yourself, run it offline, air-gap it. No backend required.</p>
+      </div>
+    </div>
+
+    <div class="notify">
+      <h2>Get notified at launch</h2>
+      <p>One email when the beta opens. No newsletter, no follow-ups, no list resale.</p>
+      <form id="notify-form" onsubmit="event.preventDefault(); this.querySelector('.status').textContent = 'Thanks — we\\'ll let you know.'; this.querySelector('input').value='';">
+        <input type="email" required placeholder="you@example.com" />
+        <button type="submit">Notify me</button>
+        <span class="status mono" style="flex-basis: 100%; color: var(--fg-3); font-size: 12px;"></span>
+      </form>
+      <p class="note">We don't run a mailing list yet — this form is a placeholder until the beta signup opens.</p>
+    </div>
+
+    <div class="roadmap">
+      <h2>Roadmap</h2>
+      <div class="row">
+        <span class="stage">SPEC</span>
+        <span>Threat model, crypto primitives selection, key storage design.</span>
+        <span class="status s-done">Done</span>
+      </div>
+      <div class="row">
+        <span class="stage">CORE</span>
+        <span>Wallet core compiled to WebAssembly with shared desktop codebase.</span>
+        <span class="status s-prog">In progress</span>
+      </div>
+      <div class="row">
+        <span class="stage">UI</span>
+        <span>Send / receive / multi-chain dashboard · hardware-wallet bridge.</span>
+        <span class="status s-prog">In progress</span>
+      </div>
+      <div class="row">
+        <span class="stage">AUDIT</span>
+        <span>Third-party cryptography review before public beta.</span>
+        <span class="status s-todo">Planned</span>
+      </div>
+      <div class="row">
+        <span class="stage">BETA</span>
+        <span>Public invite-only beta at web.spectrawallet.org.</span>
+        <span class="status s-todo">Planned</span>
+      </div>
+    </div>
+  </main>
+
+  <div class="footer">
+    Spectra · GPL-3.0 · <a href="../" style="border-bottom: 1px solid var(--line-2)">spectrawallet.org</a>
+  </div>
+</body>
+</html>

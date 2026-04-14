@@ -15,7 +15,7 @@ const translations = {
     'nav-legacy': 'Legacy', 'nav-download': 'Download', 'nav-docs': 'Docs', 'nav-donate': 'Donate',
     'hero-title': 'The Swiss<br/>Army Knife<br/><span class="accent">of crypto<br/>wallets.</span>',
     'hero-sub': 'Hold. Send. Stake. Recover.<br/>No trading. No swaps. No "buy with credit card."<br/>No surface area for thieves to crawl through.',
-    'hero-btn-download': 'Download Spectra', 'hero-btn-manual': 'Read the manual →',
+    'hero-btn-download': 'Download Spectra', 'hero-btn-manual': 'Read the docs →',
     'hero-stat-1': 'servers between you and the chain', 'hero-stat-2': 'legacy wallet formats supported',
     'hero-stat-3': 'themes &amp; plugins', 'hero-stat-4': 'job: protect your money',
     'hero-trust': 'Zero telemetry. Zero accounts. Zero ads. Every line of code is public — read it, audit it, build it yourself, and verify the binary. We cannot track you because we built it that way.',
@@ -31,7 +31,7 @@ const translations = {
     'ethos-not-4': 'A meme-token launcher', 'ethos-not-5': 'A get-rich-quick machine',
     'features-label': '/ 02 — FEATURES',
     'features-title': 'Every blade you actually need.<br/><span class="muted">None of the ones that cut you.</span>',
-    'f01-h': 'Multi-chain, single mind', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana, and 40+ others under one keyring. Each chain isolated, each balance independent.',
+    'f01-h': 'Multi-chain, modular by design', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana, and 40+ others — each chain in its own isolated module, with its own seed phrase. A breach in one never touches the rest.',
     'f02-h': 'Self-diagnostics', 'f02-p': 'The wallet runs continuous health checks: peer connectivity, chain sync, key integrity, mempool fee sanity. When something is off, you know first.',
     'f03-h': 'Verbose logs, plain English', 'f03-p': 'Every transaction, every connection, every signature — written to a log you can actually read. Filter, search, export. Debug your own wallet.',
     'f04-h': 'Customizable down to the pixel', 'f04-p': 'Themes, layouts, keybindings, hotkeys, panel arrangement. Build your own wallet on top of ours with the plugin SDK.',
@@ -77,11 +77,11 @@ const translations = {
     'dl-label': '/ 05 — DOWNLOAD', 'dl-title': 'Free. Forever. <span class="accent">Forever free.</span>',
     'dl-lead': 'No accounts. No emails. No telemetry. No "premium tier." Just a binary you can verify and run.',
     'dl-mac-meta': 'Universal · Apple Silicon + Intel', 'dl-win-meta': 'x86_64 · Win 10+',
-    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-src-meta': 'git clone &amp; build it yourself',
+    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-ios-meta': 'Native Liquid Glass · iOS 17+', 'dl-and-meta': 'Native Material You · Android 12+', 'dl-web-meta': 'Browser wallet · no install', 'dl-web-size': 'Coming soon', 'dl-src-meta': 'git clone &amp; build it yourself',
     'dl-src-size': '~6 min on a laptop', 'verify-label': 'VERIFY:',
     'donate-label': '/ 06 — DONATE',
     'donate-h2': 'If Spectra ever saved you money,<br/><span class="accent">please give some back.</span>',
-    'donate-p': "Spectra has no investors, no token, no premium tier, no ads, and never will. The entire project runs on donations from people who think a wallet should be a wallet. If that's you, here are our addresses.",
+    'donate-p': "Spectra has no investors, no token, no premium tier, no ads, and never will. The entire project runs on donations from people who think a wallet should be a wallet. If that's you, we'll be ready soon.", 'donate-soon': 'Donation addresses — coming soon.',
     'footer-tagline': 'The Swiss Army Knife of Crypto Wallets.',
     'footer-h4-project': 'Project', 'footer-source-mirror': 'Source mirror', 'footer-repro': 'Reproducible builds', 'footer-audit': 'Security audits',
     'footer-h4-docs': 'Docs', 'footer-manual': 'Manual', 'footer-recovery': 'Recovery guide',
@@ -111,7 +111,7 @@ const translations = {
     'ethos-not-4': '土狗代币发射台', 'ethos-not-5': '一夜暴富机器',
     'features-label': '/ 02 — 功能',
     'features-title': '你真正需要的每一把刀。<br/><span class="muted">没有会割伤你的那种。</span>',
-    'f01-h': '多链，一脑', 'f01-p': 'Bitcoin、Ethereum、Litecoin、Monero、Solana 及 40 余种资产，共用一把钥匙。每条链独立隔离，每个余额互不干扰。',
+    'f01-h': '多链，模块化设计', 'f01-p': 'Bitcoin、Ethereum、Litecoin、Monero、Solana 及 40 余种链——每条链独立运行在自己的模块中，拥有各自的助记词。一条链被攻破，其他链毫发无损。',
     'f02-h': '自我诊断', 'f02-p': '钱包持续运行健康检查：节点连接、链同步、密钥完整性、内存池费用是否合理。出问题前，你是第一个知道的。',
     'f03-h': '详细日志，看得懂的语言', 'f03-p': '每一笔交易、每一次连接、每一次签名——全写进日志，可筛选、可搜索、可导出。自己调试自己的钱包。',
     'f04-h': '像素级定制', 'f04-p': '主题、布局、快捷键、面板排列，随你设定。用插件 SDK 在我们的基础上构建你自己的钱包。',
@@ -157,11 +157,11 @@ const translations = {
     'dl-label': '/ 05 — 下载', 'dl-title': '免费。永远。<span class="accent">永远免费。</span>',
     'dl-lead': '无需注册，无需邮箱，无遥测，没有"高级版"。只是一个你可以验证并运行的二进制文件。',
     'dl-mac-meta': '通用版 · Apple Silicon + Intel', 'dl-win-meta': 'x86_64 · Win 10+',
-    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-src-meta': 'git clone 并自行构建',
+    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-ios-meta': '原生 Liquid Glass · iOS 17+', 'dl-and-meta': '原生 Material You · Android 12+', 'dl-web-meta': '浏览器钱包 · 无需安装', 'dl-web-size': '即将上线', 'dl-src-meta': 'git clone 并自行构建',
     'dl-src-size': '约 6 分钟（笔记本电脑）', 'verify-label': '验证：',
     'donate-label': '/ 06 — 捐赠',
     'donate-h2': '如果 Spectra 帮你省了钱，<br/><span class="accent">请考虑回馈一些。</span>',
-    'donate-p': 'Spectra 没有投资人，没有代币，没有高级版，没有广告，也永远不会有。整个项目依靠那些认为钱包就该是钱包的人的捐款运营。如果你也这么认为，这是我们的收款地址。',
+    'donate-p': 'Spectra 没有投资人，没有代币，没有高级版，没有广告，也永远不会有。整个项目依靠那些认为钱包就该是钱包的人的捐款运营。如果你也这么认为，我们很快就会准备好。', 'donate-soon': '捐款地址 — 即将上线。',
     'footer-tagline': '加密货币世界的瑞士军刀。',
     'footer-h4-project': '项目', 'footer-source-mirror': '源码镜像', 'footer-repro': '可复现构建', 'footer-audit': '安全审计',
     'footer-h4-docs': '文档', 'footer-manual': '使用手册', 'footer-recovery': '恢复指南',
@@ -191,7 +191,7 @@ const translations = {
     'ethos-not-4': 'Un lanceur de meme-tokens', 'ethos-not-5': 'Une machine à s\'enrichir rapidement',
     'features-label': '/ 02 — FONCTIONS',
     'features-title': 'Chaque lame dont vous avez vraiment besoin.<br/><span class="muted">Aucune qui puisse vous couper.</span>',
-    'f01-h': 'Multi-chaînes, un seul esprit', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana, et 40+ autres sous un seul trousseau. Chaque chaîne isolée, chaque solde indépendant.',
+    'f01-h': 'Multi-chaînes, modulaire par conception', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana, et 40+ autres — chaque chaîne dans son propre module isolé, avec sa propre phrase de récupération. Une brèche sur une chaîne ne touche jamais les autres.',
     'f02-h': 'Auto-diagnostics', 'f02-p': 'Le portefeuille effectue des contrôles de santé continus : connectivité des pairs, sync de chaîne, intégrité des clés, frais mempool. Quand quelque chose cloche, vous êtes le premier informé.',
     'f03-h': 'Logs détaillés, en clair', 'f03-p': 'Chaque transaction, chaque connexion, chaque signature — consignée dans un journal que vous pouvez réellement lire. Filtrer, rechercher, exporter. Déboguez votre propre portefeuille.',
     'f04-h': 'Personnalisable jusqu\'au pixel', 'f04-p': 'Thèmes, mises en page, raccourcis clavier, disposition des panneaux. Construisez votre propre portefeuille sur le nôtre avec le SDK de plugins.',
@@ -237,11 +237,11 @@ const translations = {
     'dl-label': '/ 05 — TÉLÉCHARGER', 'dl-title': 'Gratuit. Pour toujours. <span class="accent">À jamais gratuit.</span>',
     'dl-lead': 'Pas de comptes. Pas d\'emails. Pas de télémétrie. Pas de « niveau premium ». Juste un binaire que vous pouvez vérifier et exécuter.',
     'dl-mac-meta': 'Universel · Apple Silicon + Intel', 'dl-win-meta': 'x86_64 · Win 10+',
-    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-src-meta': 'git clone &amp; compilez vous-même',
+    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-ios-meta': 'Liquid Glass natif · iOS 17+', 'dl-and-meta': 'Material You natif · Android 12+', 'dl-web-meta': 'Portefeuille navigateur · sans installation', 'dl-web-size': 'Bientôt disponible', 'dl-src-meta': 'git clone &amp; compilez vous-même',
     'dl-src-size': '~6 min sur un laptop', 'verify-label': 'VÉRIFIER :',
     'donate-label': '/ 06 — FAIRE UN DON',
     'donate-h2': 'Si Spectra vous a un jour fait économiser de l\'argent,<br/><span class="accent">pensez à en redonner un peu.</span>',
-    'donate-p': 'Spectra n\'a pas d\'investisseurs, pas de token, pas de niveau premium, pas de publicités, et n\'en aura jamais. Le projet entier fonctionne grâce aux dons de personnes qui pensent qu\'un portefeuille doit être un portefeuille. Si c\'est votre cas, voici nos adresses.',
+    'donate-p': 'Spectra n\'a pas d\'investisseurs, pas de token, pas de niveau premium, pas de publicités, et n\'en aura jamais. Le projet entier fonctionne grâce aux dons de personnes qui pensent qu\'un portefeuille doit être un portefeuille. Si c\'est votre cas, nous serons prêts bientôt.', 'donate-soon': 'Adresses de dons — bientôt disponibles.',
     'footer-tagline': 'Le couteau suisse des portefeuilles crypto.',
     'footer-h4-project': 'Projet', 'footer-source-mirror': 'Miroir source', 'footer-repro': 'Builds reproductibles', 'footer-audit': 'Audits de sécurité',
     'footer-h4-docs': 'Docs', 'footer-manual': 'Manuel', 'footer-recovery': 'Guide de récupération',
@@ -255,7 +255,7 @@ const translations = {
     'nav-legacy': 'Compatibilidad', 'nav-download': 'Descargar', 'nav-docs': 'Docs', 'nav-donate': 'Donar',
     'hero-title': 'La navaja suiza<br/>de las<br/><span class="accent">carteras crypto.</span>',
     'hero-sub': 'Guarda. Envía. Haz staking. Recupera.<br/>Sin trading, sin swaps, sin «comprar con tarjeta de crédito».<br/>Sin superficie de ataque para ladrones.',
-    'hero-btn-download': 'Descargar Spectra', 'hero-btn-manual': 'Leer el manual →',
+    'hero-btn-download': 'Descargar Spectra', 'hero-btn-manual': 'Leer los docs →',
     'hero-stat-1': 'servidores entre tú y la cadena', 'hero-stat-2': 'formatos de cartera legacy soportados',
     'hero-stat-3': 'temas y plugins', 'hero-stat-4': 'objetivo: proteger tu dinero',
     'hero-trust': 'Cero telemetría. Cero cuentas. Cero anuncios. Cada línea de código es pública — léela, audítala, compílala tú mismo y verifica el binario. No podemos rastrearte porque lo construimos así.',
@@ -271,7 +271,7 @@ const translations = {
     'ethos-not-4': 'Un lanzador de meme-tokens', 'ethos-not-5': 'Una máquina para hacerse rico rápido',
     'features-label': '/ 02 — FUNCIONES',
     'features-title': 'Cada hoja que realmente necesitas.<br/><span class="muted">Ninguna de las que te cortan.</span>',
-    'f01-h': 'Multi-cadena, una mente', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana y 40+ más bajo un solo llavero. Cada cadena aislada, cada saldo independiente.',
+    'f01-h': 'Multi-cadena, modular por diseño', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana y 40+ más — cada cadena en su propio módulo aislado, con su propia frase semilla. Una brecha en una nunca toca las demás.',
     'f02-h': 'Auto-diagnósticos', 'f02-p': 'La cartera ejecuta comprobaciones de salud continuas: conectividad de pares, sincronización de cadena, integridad de claves, racionalidad de tarifas del mempool. Cuando algo falla, eres el primero en saberlo.',
     'f03-h': 'Registros detallados, en texto claro', 'f03-p': 'Cada transacción, cada conexión, cada firma — escrita en un registro que puedes leer. Filtra, busca, exporta. Depura tu propia cartera.',
     'f04-h': 'Personalizable hasta el píxel', 'f04-p': 'Temas, diseños, atajos de teclado, disposición de paneles. Construye tu propia cartera sobre la nuestra con el SDK de plugins.',
@@ -317,11 +317,11 @@ const translations = {
     'dl-label': '/ 05 — DESCARGAR', 'dl-title': 'Gratis. Para siempre. <span class="accent">Para siempre gratis.</span>',
     'dl-lead': 'Sin cuentas. Sin correos. Sin telemetría. Sin «nivel premium». Solo un binario que puedes verificar y ejecutar.',
     'dl-mac-meta': 'Universal · Apple Silicon + Intel', 'dl-win-meta': 'x86_64 · Win 10+',
-    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-src-meta': 'git clone &amp; compílalo tú mismo',
+    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-ios-meta': 'Liquid Glass nativo · iOS 17+', 'dl-and-meta': 'Material You nativo · Android 12+', 'dl-web-meta': 'Cartera web · sin instalación', 'dl-web-size': 'Próximamente', 'dl-src-meta': 'git clone &amp; compílalo tú mismo',
     'dl-src-size': '~6 min en un laptop', 'verify-label': 'VERIFICAR:',
     'donate-label': '/ 06 — DONAR',
     'donate-h2': 'Si Spectra alguna vez te ahorró dinero,<br/><span class="accent">por favor devuelve algo.</span>',
-    'donate-p': 'Spectra no tiene inversores, ni token, ni nivel premium, ni anuncios, y nunca los tendrá. Todo el proyecto funciona gracias a donaciones de personas que creen que una cartera debe ser una cartera. Si eso eres tú, aquí están nuestras direcciones.',
+    'donate-p': 'Spectra no tiene inversores, ni token, ni nivel premium, ni anuncios, y nunca los tendrá. Todo el proyecto funciona gracias a donaciones de personas que creen que una cartera debe ser una cartera. Si eso eres tú, pronto estaremos listos.', 'donate-soon': 'Direcciones de donación — próximamente.',
     'footer-tagline': 'La navaja suiza de las carteras crypto.',
     'footer-h4-project': 'Proyecto', 'footer-source-mirror': 'Espejo de código', 'footer-repro': 'Compilaciones reproducibles', 'footer-audit': 'Auditorías de seguridad',
     'footer-h4-docs': 'Docs', 'footer-manual': 'Manual', 'footer-recovery': 'Guía de recuperación',
@@ -335,7 +335,7 @@ const translations = {
     'nav-legacy': 'Compatibilidade', 'nav-download': 'Baixar', 'nav-docs': 'Docs', 'nav-donate': 'Doar',
     'hero-title': 'O canivete suíço<br/>das<br/><span class="accent">carteiras crypto.</span>',
     'hero-sub': 'Guardar. Enviar. Fazer staking. Recuperar.<br/>Sem trading, sem swaps, sem «comprar com cartão de crédito».<br/>Sem superfície de ataque para ladrões.',
-    'hero-btn-download': 'Baixar Spectra', 'hero-btn-manual': 'Ler o manual →',
+    'hero-btn-download': 'Baixar Spectra', 'hero-btn-manual': 'Ler os docs →',
     'hero-stat-1': 'servidores entre você e a cadeia', 'hero-stat-2': 'formatos de carteira legacy suportados',
     'hero-stat-3': 'temas e plugins', 'hero-stat-4': 'missão: proteger o seu dinheiro',
     'hero-trust': 'Zero telemetria. Zero contas. Zero anúncios. Cada linha de código é pública — leia-a, audite-a, compile-a você mesmo e verifique o binário. Não podemos rastrear você porque foi assim que o construímos.',
@@ -351,7 +351,7 @@ const translations = {
     'ethos-not-4': 'Um lançador de meme-tokens', 'ethos-not-5': 'Uma máquina de enriquecimento rápido',
     'features-label': '/ 02 — FUNCIONALIDADES',
     'features-title': 'Cada lâmina que você realmente precisa.<br/><span class="muted">Nenhuma das que te cortam.</span>',
-    'f01-h': 'Multi-cadeia, uma mente', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana e 40+ outros num único chaveiro. Cada cadeia isolada, cada saldo independente.',
+    'f01-h': 'Multi-cadeia, modular por design', 'f01-p': 'Bitcoin, Ethereum, Litecoin, Monero, Solana e 40+ outros — cada cadeia no seu próprio módulo isolado, com a sua própria frase semente. Uma brecha numa nunca toca as outras.',
     'f02-h': 'Auto-diagnósticos', 'f02-p': 'A carteira executa verificações de saúde contínuas: conectividade de pares, sincronização de cadeia, integridade de chaves, sanidade de taxas do mempool. Quando algo está errado, você é o primeiro a saber.',
     'f03-h': 'Logs detalhados, em texto claro', 'f03-p': 'Cada transação, cada conexão, cada assinatura — escrita num log que você pode ler de verdade. Filtrar, pesquisar, exportar. Depure a sua própria carteira.',
     'f04-h': 'Personalizável até ao pixel', 'f04-p': 'Temas, layouts, atalhos de teclado, arranjo de painéis. Construa a sua própria carteira em cima da nossa com o SDK de plugins.',
@@ -397,11 +397,11 @@ const translations = {
     'dl-label': '/ 05 — BAIXAR', 'dl-title': 'Gratuito. Para sempre. <span class="accent">Para sempre gratuito.</span>',
     'dl-lead': 'Sem contas. Sem e-mails. Sem telemetria. Sem «nível premium». Apenas um binário que pode verificar e executar.',
     'dl-mac-meta': 'Universal · Apple Silicon + Intel', 'dl-win-meta': 'x86_64 · Win 10+',
-    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-src-meta': 'git clone &amp; compile você mesmo',
+    'dl-lin-meta': 'AppImage · deb · rpm · Flatpak', 'dl-ios-meta': 'Liquid Glass nativo · iOS 17+', 'dl-and-meta': 'Material You nativo · Android 12+', 'dl-web-meta': 'Carteira web · sem instalação', 'dl-web-size': 'Em breve', 'dl-src-meta': 'git clone &amp; compile você mesmo',
     'dl-src-size': '~6 min num laptop', 'verify-label': 'VERIFICAR:',
     'donate-label': '/ 06 — DOAR',
     'donate-h2': 'Se Spectra alguma vez te poupou dinheiro,<br/><span class="accent">por favor devolve um pouco.</span>',
-    'donate-p': 'Spectra não tem investidores, nem token, nem nível premium, nem anúncios, e nunca terá. Todo o projeto funciona graças a doações de pessoas que acreditam que uma carteira deve ser uma carteira. Se é o seu caso, aqui estão os nossos endereços.',
+    'donate-p': 'Spectra não tem investidores, nem token, nem nível premium, nem anúncios, e nunca terá. Todo o projeto funciona graças a doações de pessoas que acreditam que uma carteira deve ser uma carteira. Se é o seu caso, em breve estaremos prontos.', 'donate-soon': 'Endereços de doação — em breve.',
     'footer-tagline': 'O canivete suíço das carteiras crypto.',
     'footer-h4-project': 'Projeto', 'footer-source-mirror': 'Espelho de código', 'footer-repro': 'Compilações reproduzíveis', 'footer-audit': 'Auditorias de segurança',
     'footer-h4-docs': 'Docs', 'footer-manual': 'Manual', 'footer-recovery': 'Guia de recuperação',
@@ -581,4 +581,112 @@ function setLang(lang, { pushHistory = false } = {}) {
       } catch { /* clipboard blocked */ }
     });
   });
+})();
+
+// ============================================================
+// Randomize per-element spectrum timing so colors drift out of sync
+// ============================================================
+(() => {
+  const rand = (min, max) => (min + Math.random() * (max - min)).toFixed(2);
+  document.querySelectorAll('*').forEach(el => {
+    const cs = getComputedStyle(el);
+    if (cs.animationName && cs.animationName.includes('spectrum-shift')) {
+      el.style.setProperty('--spec-delay', `-${rand(0, 45)}s`);
+      el.style.setProperty('--spec-dur', `${rand(34, 48)}s`);
+    }
+  });
+})();
+
+// ============================================================
+// Crypto-icon background grid with cursor bulge effect
+// ============================================================
+(() => {
+  const bg = document.querySelector('.crypto-bg');
+  if (!bg) return;
+
+  const TOKENS = ['Aave','Aptos','Arbitrum','Avax','BNB','Bgb','BitcoinCash','BitcoinSV','Bitcoin','Bonk','Btt','Cardano','Cro','Dai','Dogecoin','Ena','EthereumClassic','Ethereum','Eurc','FDUSD','Hyperliquid','Icp','Jup','Kcs','Leo','Link','Litecoin','Monero','Near','Optimism','Paxg','Pepe','Polkadot','Pump','Pyusd','Rlusd','Shib','Sky','Solana','Stellar','Sui','Tether','Ton','Tron','Tusd','USDC','Uni','Usd1','Usdd','Usde','Usdg','Usds','Wbtc','Wlfi','XRP','Xaut'];
+  const ICON_URL = (name) => `TokenIcons/${name}Token.png`;
+  const SPACING = 110;
+  const JITTER = 30;
+  const RADIUS = 280;
+  const MAX_SCALE = 1.35;
+
+  let cells = [];
+  let cols = 0, rows = 0;
+  let mx = -9999, my = -9999;
+  let ticking = false;
+
+  function build() {
+    bg.innerHTML = '';
+    cells = [];
+    cols = Math.ceil(window.innerWidth / SPACING) + 1;
+    rows = Math.ceil(window.innerHeight / SPACING) + 1;
+    const frag = document.createDocumentFragment();
+    let i = 0;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const el = document.createElement('div');
+        el.className = 'crypto-cell';
+        const img = document.createElement('img');
+        img.src = ICON_URL(TOKENS[i % TOKENS.length]);
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = '';
+        el.appendChild(img);
+        const jx = (Math.sin(i * 12.9898) * 43758.5453) % 1;
+        const jy = (Math.sin(i * 78.233)  * 43758.5453) % 1;
+        const x = c * SPACING + (r % 2) * (SPACING / 2) + jx * JITTER;
+        const y = r * SPACING + jy * JITTER;
+        el.style.left = (x - 18) + 'px';
+        el.style.top  = (y - 18) + 'px';
+        el.style.setProperty('--dx', (((Math.sin(i * 3.14)  * 10000) % 1) * 14 - 7).toFixed(2) + 'px');
+        el.style.setProperty('--dy', (((Math.sin(i * 2.71)  * 10000) % 1) * 14 - 7).toFixed(2) + 'px');
+        el.style.animationDelay = (-(i * 0.37) % 14).toFixed(2) + 's';
+        el.style.animationDuration = (12 + (i % 7)) + 's';
+        cells.push({ el, cx: x, cy: y });
+        frag.appendChild(el);
+        i++;
+      }
+    }
+    bg.appendChild(frag);
+  }
+
+  function update() {
+    ticking = false;
+    bg.style.setProperty('--mx', mx + 'px');
+    bg.style.setProperty('--my', my + 'px');
+    const r2 = RADIUS * RADIUS;
+    for (const c of cells) {
+      const dx = mx - c.cx;
+      const dy = my - c.cy;
+      const d2 = dx * dx + dy * dy;
+      let scale = 1, alpha = 0.09, gray = 1, bright = 0.85;
+      if (d2 < r2) {
+        const t = 1 - Math.sqrt(d2) / RADIUS;
+        const e = t * t;
+        scale = 1 + (MAX_SCALE - 1) * e;
+        alpha = 0.09 + 0.55 * e;
+        gray = 1 - e * 0.9;
+        bright = 0.85 + 0.2 * e;
+      }
+      c.el.style.opacity = alpha.toFixed(3);
+      c.el.style.filter = `grayscale(${gray.toFixed(3)}) brightness(${bright.toFixed(2)})`;
+      c.el.style.setProperty('--scale', scale.toFixed(3));
+      c.el.style.zIndex = Math.round(scale * 10);
+    }
+  }
+
+  function onMove(e) {
+    mx = e.clientX;
+    my = e.clientY;
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener('mousemove', onMove, { passive: true });
+  window.addEventListener('mouseleave', () => { mx = -9999; my = -9999; requestAnimationFrame(update); });
+  window.addEventListener('resize', () => { build(); update(); });
+  build();
 })();
