@@ -25,6 +25,7 @@
       <a href="#ethos"       data-i18n="nav-ethos">Ethos</a>
       <a href="#features"    data-i18n="nav-features">Features</a>
       <a href="#protocols"   data-i18n="nav-tech">Tech</a>
+      <a href="#security"    data-i18n="nav-security">Security</a>
       <a href="#diagnostics" data-i18n="nav-diagnostics">Diagnostics</a>
       <a href="#legacy"      data-i18n="nav-legacy">Legacy</a>
       <a href="#download"    data-i18n="nav-download">Download</a>
@@ -340,6 +341,96 @@
         <div class="proto-chain-tag">CROSS-CHAIN</div>
         <h3 class="proto-name">PSBT v2 — BIP-370</h3>
         <p data-i18n="proto-6-desc">The upgraded Partially Signed Bitcoin Transaction format adds per-input and per-output roles, enabling cleaner multi-party signing workflows across hardware wallets and air-gapped setups.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEED SECURITY ===== -->
+  <section class="section protocols" id="security">
+    <div class="section-label" data-i18n="sec-label">/ SEED SECURITY</div>
+    <div class="proto-header">
+      <h2 class="section-title" data-i18n-html="sec-title">Your seed, <span class="accent">sealed in a vault.</span></h2>
+      <p class="proto-lead" data-i18n="sec-lead">
+        Your recovery phrase is the single most valuable 12–24 words you'll ever own.
+        We treat it that way. Keys never leave your device. Never hit a server.
+        Never touch the clipboard in plaintext. Encrypted at rest with modern,
+        peer-reviewed cryptography — the same primitives that protect Signal,
+        WireGuard, and age.
+      </p>
+    </div>
+
+    <div class="proto-grid">
+      <div class="proto-card">
+        <div class="proto-chain-tag">AT REST</div>
+        <h3 class="proto-name">XChaCha20-Poly1305</h3>
+        <p data-i18n="sec-1-desc">Authenticated encryption with a 192-bit nonce and 256-bit key. Fast, constant-time, and immune to the padding-oracle and timing attacks that still plague AES-CBC implementations.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">KEY DERIVATION</div>
+        <h3 class="proto-name">Argon2id</h3>
+        <p data-i18n="sec-2-desc">Winner of the Password Hashing Competition. Calibrated to ≥1 GiB of memory and 3 passes so GPU and ASIC attackers get no meaningful speedup over your laptop.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">LOCAL-ONLY</div>
+        <h3 class="proto-name">Keys never leave the device</h3>
+        <p data-i18n="sec-3-desc">Spectra has no cloud, no sync service, no backup server. Your encrypted vault lives in exactly one place: the machine you put it on. We literally cannot leak what we never see.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">HARDWARE-BACKED</div>
+        <h3 class="proto-name">Secure Enclave &amp; TPM</h3>
+        <p data-i18n="sec-4-desc">On macOS, iOS, and modern Windows/Linux, the vault key is wrapped by Secure Enclave / TPM 2.0 — biometric-gated, non-exportable, and resistant to offline attack even if the disk is stolen.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">AIR-GAP READY</div>
+        <h3 class="proto-name">Offline signing via PSBT</h3>
+        <p data-i18n="sec-5-desc">Keep signing keys on a machine that never touches a network. Spectra exchanges partially-signed transactions over QR or SD card — the seed never crosses a wire.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">AUDITABLE</div>
+        <h3 class="proto-name">Open source, reproducible</h3>
+        <p data-i18n="sec-6-desc">Every crypto primitive lives in a library you can read, test, and replace. Reproducible builds prove the binary you run matches the source you audited. No blobs, no magic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOR ===== -->
+  <section class="section protocols" id="tor">
+    <div class="section-label">/ TOR &amp; PRIVACY ROUTING</div>
+    <div class="proto-header">
+      <h2 class="section-title">Your transactions.<br/><span class="accent">Nobody's business.</span></h2>
+      <p class="proto-lead">Most wallets leak your IP to indexers, nodes, and analytics firms every time you check a balance. Spectra routes all network traffic through Tor by default — and unlike bolted-on Tor support in other wallets, ours is deep, native, and fully configurable. Pick your exit nodes. Set bridges. Define circuits per chain. Real control, not a checkbox.</p>
+    </div>
+
+    <div class="proto-grid">
+      <div class="proto-card">
+        <div class="proto-chain-tag">DEFAULT ON</div>
+        <h3 class="proto-name">Tor by default</h3>
+        <p>Every RPC call, peer handshake, and fee lookup is routed through Tor out of the box. No opt-in required. Your IP never touches a node, an indexer, or a fee oracle.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">CUSTOMIZABLE</div>
+        <h3 class="proto-name">Custom exit nodes</h3>
+        <p>Pin exit nodes by country, fingerprint, or IP range. Exclude jurisdictions you don't trust. Force a specific relay for a specific chain. You set the rules — Spectra enforces them.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">CENSORSHIP RESISTANT</div>
+        <h3 class="proto-name">Bridges &amp; pluggable transports</h3>
+        <p>Behind a firewall that blocks Tor? Configure obfs4, Snowflake, or meek bridges directly in the settings panel. Spectra ships with bridge presets for high-censorship regions.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">PER-CHAIN</div>
+        <h3 class="proto-name">Isolated circuits per chain</h3>
+        <p>Bitcoin traffic never shares a Tor circuit with Monero or Ethereum traffic. Each chain gets its own isolated circuit — so cross-chain correlation attacks have nothing to grab onto.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">ADVANCED</div>
+        <h3 class="proto-name">Guard node &amp; path control</h3>
+        <p>Lock your guard node. Set the minimum number of hops. Tune circuit build timeout and retry logic. Expose the full torrc — because power users shouldn't be limited to a slider.</p>
+      </div>
+      <div class="proto-card">
+        <div class="proto-chain-tag">FALLBACK</div>
+        <h3 class="proto-name">Kill switch</h3>
+        <p>If the Tor circuit drops, Spectra stops. No silent fallback to clearnet. No accidental IP leak. The kill switch is always on — you have to explicitly disable it if you want clearnet access.</p>
       </div>
     </div>
   </section>

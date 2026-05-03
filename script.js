@@ -11,7 +11,16 @@ const translations = {
 
   // ----------------------------------------------------------
   en: {
-    'nav-ethos': 'Ethos', 'nav-features': 'Features', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnostics',
+    'nav-ethos': 'Ethos', 'nav-features': 'Features', 'nav-tech': 'Tech', 'nav-security': 'Security', 'nav-diagnostics': 'Diagnostics',
+    'sec-label': '/ SEED SECURITY',
+    'sec-title': 'Your seed, <span class="accent">sealed in a vault.</span>',
+    'sec-lead': "Your recovery phrase is the single most valuable 12–24 words you'll ever own. We treat it that way. Keys never leave your device. Never hit a server. Never touch the clipboard in plaintext. Encrypted at rest with modern, peer-reviewed cryptography — the same primitives that protect Signal, WireGuard, and age.",
+    'sec-1-desc': 'Authenticated encryption with a 192-bit nonce and 256-bit key. Fast, constant-time, and immune to the padding-oracle and timing attacks that still plague AES-CBC implementations.',
+    'sec-2-desc': 'Winner of the Password Hashing Competition. Calibrated to ≥1 GiB of memory and 3 passes so GPU and ASIC attackers get no meaningful speedup over your laptop.',
+    'sec-3-desc': 'Spectra has no cloud, no sync service, no backup server. Your encrypted vault lives in exactly one place: the machine you put it on. We literally cannot leak what we never see.',
+    'sec-4-desc': 'On macOS, iOS, and modern Windows/Linux, the vault key is wrapped by Secure Enclave / TPM 2.0 — biometric-gated, non-exportable, and resistant to offline attack even if the disk is stolen.',
+    'sec-5-desc': 'Keep signing keys on a machine that never touches a network. Spectra exchanges partially-signed transactions over QR or SD card — the seed never crosses a wire.',
+    'sec-6-desc': 'Every crypto primitive lives in a library you can read, test, and replace. Reproducible builds prove the binary you run matches the source you audited. No blobs, no magic.',
     'nav-legacy': 'Legacy', 'nav-download': 'Download', 'nav-docs': 'Docs', 'nav-donate': 'Donate',
     'hero-title': 'The Swiss<br/>Army Knife<br/><span class="accent">of crypto<br/>wallets.</span>',
     'hero-sub': 'Hold. Send. Stake. Recover.<br/>No trading. No swaps. No "buy with credit card."<br/>No surface area for thieves to crawl through.',
@@ -91,7 +100,16 @@ const translations = {
 
   // ----------------------------------------------------------
   zh: {
-    'nav-ethos': '理念', 'nav-features': '功能', 'nav-tech': '技术', 'nav-diagnostics': '诊断',
+    'nav-ethos': '理念', 'nav-features': '功能', 'nav-tech': '技术', 'nav-security': '安全', 'nav-diagnostics': '诊断',
+    'sec-label': '/ 种子安全',
+    'sec-title': '你的种子，<span class="accent">封存于保险库。</span>',
+    'sec-lead': '你的助记词是你拥有的最有价值的 12–24 个单词。我们认真对待它。私钥永远不离开你的设备，永远不发送到服务器，永远不以明文形式进入剪贴板。使用经同行评审的现代密码学进行静态加密 —— 与 Signal、WireGuard 和 age 所用的底层原语相同。',
+    'sec-1-desc': '带 192 位随机数和 256 位密钥的认证加密。快速、恒定时间执行，免疫仍困扰 AES-CBC 实现的填充神谕和时序攻击。',
+    'sec-2-desc': '密码哈希竞赛冠军。参数校准为 ≥1 GiB 内存和 3 轮迭代，让 GPU 和 ASIC 攻击者相对你的笔记本无任何实质加速。',
+    'sec-3-desc': 'Spectra 没有云、没有同步服务、没有备份服务器。你的加密保险库只存在一个地方：你放置它的设备。我们根本无法泄露我们从未见过的东西。',
+    'sec-4-desc': '在 macOS、iOS 以及现代 Windows/Linux 上，保险库密钥由 Secure Enclave / TPM 2.0 包装 —— 生物识别保护、不可导出，即使硬盘被盗也能抵御离线攻击。',
+    'sec-5-desc': '将签名密钥保存在永不联网的机器上。Spectra 通过二维码或 SD 卡交换部分签名交易 —— 种子永远不会经过电缆。',
+    'sec-6-desc': '每个密码学原语都位于你可以阅读、测试和替换的库中。可复现构建证明你运行的二进制文件与你审计的源代码一致。没有二进制块，没有魔法。',
     'nav-legacy': '兼容性', 'nav-download': '下载', 'nav-docs': '文档', 'nav-donate': '捐赠',
     'hero-title': '加密货币<br/>世界的<br/><span class="accent">瑞士军刀。</span>',
     'hero-sub': '持有。转账。质押。恢复。<br/>不交易，不换币，不"用信用卡买币"。<br/>没有多余的入口，让黑客无缝可钻。',
@@ -171,7 +189,16 @@ const translations = {
 
   // ----------------------------------------------------------
   fr: {
-    'nav-ethos': 'Philosophie', 'nav-features': 'Fonctions', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnostics',
+    'nav-ethos': 'Philosophie', 'nav-features': 'Fonctions', 'nav-tech': 'Tech', 'nav-security': 'Sécurité', 'nav-diagnostics': 'Diagnostics',
+    'sec-label': '/ SÉCURITÉ DES SEMENCES',
+    'sec-title': 'Votre semence, <span class="accent">scellée dans un coffre.</span>',
+    'sec-lead': "Votre phrase de récupération est la collection de 12 à 24 mots la plus précieuse que vous posséderez jamais. Nous la traitons comme telle. Les clés ne quittent jamais votre appareil. Ne touchent jamais un serveur. Ne passent jamais en clair par le presse-papiers. Chiffrées au repos avec une cryptographie moderne et examinée par les pairs — les mêmes primitives qui protègent Signal, WireGuard et age.",
+    'sec-1-desc': "Chiffrement authentifié avec un nonce de 192 bits et une clé de 256 bits. Rapide, à temps constant, et immunisé contre les attaques par oracle de padding et de timing qui affligent toujours les implémentations AES-CBC.",
+    'sec-2-desc': "Gagnant de la Password Hashing Competition. Calibré à ≥1 Gio de mémoire et 3 passes pour que les attaquants GPU et ASIC n'obtiennent aucun gain significatif par rapport à votre ordinateur portable.",
+    'sec-3-desc': "Spectra n'a pas de cloud, pas de service de synchronisation, pas de serveur de sauvegarde. Votre coffre chiffré vit à un seul endroit : la machine sur laquelle vous l'avez installé. Nous ne pouvons littéralement pas fuiter ce que nous ne voyons jamais.",
+    'sec-4-desc': "Sur macOS, iOS et les Windows/Linux modernes, la clé du coffre est protégée par Secure Enclave / TPM 2.0 — accès biométrique, non exportable, et résistante aux attaques hors ligne même si le disque est volé.",
+    'sec-5-desc': "Gardez les clés de signature sur une machine qui ne touche jamais un réseau. Spectra échange des transactions partiellement signées via QR code ou carte SD — la semence ne traverse jamais un câble.",
+    'sec-6-desc': "Chaque primitive cryptographique vit dans une bibliothèque que vous pouvez lire, tester et remplacer. Les builds reproductibles prouvent que le binaire que vous exécutez correspond à la source que vous avez auditée. Aucun blob, aucune magie.",
     'nav-legacy': 'Compatibilité', 'nav-download': 'Télécharger', 'nav-docs': 'Docs', 'nav-donate': 'Faire un don',
     'hero-title': 'Le couteau<br/>suisse des<br/><span class="accent">portefeuilles<br/>crypto.</span>',
     'hero-sub': 'Conserver. Envoyer. Staker. Récupérer.<br/>Sans trading, sans swap, sans « acheter avec une carte de crédit ».<br/>Aucune surface d\'attaque pour les voleurs.',
@@ -251,7 +278,16 @@ const translations = {
 
   // ----------------------------------------------------------
   es: {
-    'nav-ethos': 'Filosofía', 'nav-features': 'Funciones', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnósticos',
+    'nav-ethos': 'Filosofía', 'nav-features': 'Funciones', 'nav-tech': 'Tech', 'nav-security': 'Seguridad', 'nav-diagnostics': 'Diagnósticos',
+    'sec-label': '/ SEGURIDAD DE SEMILLAS',
+    'sec-title': 'Tu semilla, <span class="accent">sellada en una bóveda.</span>',
+    'sec-lead': 'Tu frase de recuperación es la colección de 12 a 24 palabras más valiosa que poseerás jamás. Así la tratamos. Las claves nunca salen de tu dispositivo. Nunca llegan a un servidor. Nunca pasan en texto plano por el portapapeles. Cifradas en reposo con criptografía moderna y revisada por pares — las mismas primitivas que protegen Signal, WireGuard y age.',
+    'sec-1-desc': 'Cifrado autenticado con nonce de 192 bits y clave de 256 bits. Rápido, en tiempo constante, e inmune a los ataques de oráculo de padding y temporización que aún afectan a las implementaciones de AES-CBC.',
+    'sec-2-desc': 'Ganador del Password Hashing Competition. Calibrado a ≥1 GiB de memoria y 3 pasadas para que los atacantes con GPU y ASIC no obtengan aceleración significativa frente a tu portátil.',
+    'sec-3-desc': 'Spectra no tiene nube, ni servicio de sincronización, ni servidor de respaldo. Tu bóveda cifrada vive en un único lugar: la máquina donde la pusiste. Literalmente no podemos filtrar lo que nunca vemos.',
+    'sec-4-desc': 'En macOS, iOS y Windows/Linux modernos, la clave de la bóveda está envuelta por Secure Enclave / TPM 2.0 — biométrica, no exportable, y resistente a ataques fuera de línea incluso si roban el disco.',
+    'sec-5-desc': 'Mantén las claves de firma en una máquina que nunca toca una red. Spectra intercambia transacciones parcialmente firmadas por QR o tarjeta SD — la semilla nunca cruza un cable.',
+    'sec-6-desc': 'Cada primitiva criptográfica vive en una biblioteca que puedes leer, probar y reemplazar. Las builds reproducibles prueban que el binario que ejecutas coincide con el código que auditaste. Sin blobs, sin magia.',
     'nav-legacy': 'Compatibilidad', 'nav-download': 'Descargar', 'nav-docs': 'Docs', 'nav-donate': 'Donar',
     'hero-title': 'La navaja suiza<br/>de las<br/><span class="accent">carteras crypto.</span>',
     'hero-sub': 'Guarda. Envía. Haz staking. Recupera.<br/>Sin trading, sin swaps, sin «comprar con tarjeta de crédito».<br/>Sin superficie de ataque para ladrones.',
@@ -331,7 +367,16 @@ const translations = {
 
   // ----------------------------------------------------------
   pt: {
-    'nav-ethos': 'Filosofia', 'nav-features': 'Funcionalidades', 'nav-tech': 'Tech', 'nav-diagnostics': 'Diagnósticos',
+    'nav-ethos': 'Filosofia', 'nav-features': 'Funcionalidades', 'nav-tech': 'Tech', 'nav-security': 'Segurança', 'nav-diagnostics': 'Diagnósticos',
+    'sec-label': '/ SEGURANÇA DA SEMENTE',
+    'sec-title': 'A sua semente, <span class="accent">selada num cofre.</span>',
+    'sec-lead': 'A sua frase de recuperação é o conjunto de 12 a 24 palavras mais valioso que alguma vez possuirá. Tratamo-la dessa forma. As chaves nunca saem do seu dispositivo. Nunca chegam a um servidor. Nunca passam em texto simples pela área de transferência. Cifradas em repouso com criptografia moderna e revista por pares — as mesmas primitivas que protegem Signal, WireGuard e age.',
+    'sec-1-desc': 'Cifragem autenticada com nonce de 192 bits e chave de 256 bits. Rápida, em tempo constante, e imune aos ataques de oráculo de padding e de temporização que ainda afligem implementações de AES-CBC.',
+    'sec-2-desc': 'Vencedor da Password Hashing Competition. Calibrado para ≥1 GiB de memória e 3 passagens para que atacantes com GPU e ASIC não obtenham aceleração significativa em relação ao seu portátil.',
+    'sec-3-desc': 'A Spectra não tem cloud, serviço de sincronização, nem servidor de backup. O seu cofre cifrado vive num único sítio: a máquina onde o colocou. Literalmente não podemos vazar o que nunca vemos.',
+    'sec-4-desc': 'No macOS, iOS e nos Windows/Linux modernos, a chave do cofre é envolvida por Secure Enclave / TPM 2.0 — biométrica, não exportável, e resistente a ataques offline mesmo que o disco seja roubado.',
+    'sec-5-desc': 'Mantenha as chaves de assinatura numa máquina que nunca toca numa rede. A Spectra troca transações parcialmente assinadas via QR ou cartão SD — a semente nunca atravessa um cabo.',
+    'sec-6-desc': 'Cada primitiva criptográfica vive numa biblioteca que pode ler, testar e substituir. Builds reproduzíveis provam que o binário que executa corresponde ao código que auditou. Sem blobs, sem magia.',
     'nav-legacy': 'Compatibilidade', 'nav-download': 'Baixar', 'nav-docs': 'Docs', 'nav-donate': 'Doar',
     'hero-title': 'O canivete suíço<br/>das<br/><span class="accent">carteiras crypto.</span>',
     'hero-sub': 'Guardar. Enviar. Fazer staking. Recuperar.<br/>Sem trading, sem swaps, sem «comprar com cartão de crédito».<br/>Sem superfície de ataque para ladrões.',
